@@ -14,12 +14,12 @@ public class WrappedBehaviour : MonoBehaviour {
 		
 	}
 
-    public void Blackout()
+    void Blackout()
     {
         GlobalTool.Blackout();
     }
 
-    public void Whiteout()
+    void Whiteout()
     {
         GlobalTool.Whiteout();
     }
