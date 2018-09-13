@@ -11,7 +11,7 @@ public class CameraExtraControl : MonoBehaviour {
 	void Start () {
         curtain = GameObject.Find("Curtain");
         curtainAlpha = curtain.GetComponent<Scene22AlphaControl>();
-        curtainAlpha.SetVisible(false);
+        //curtainAlpha.SetVisible(false);
         var scale = curtain.transform.localScale;
         scale.x = scale.y = 100;
         curtain.transform.localScale = scale;
