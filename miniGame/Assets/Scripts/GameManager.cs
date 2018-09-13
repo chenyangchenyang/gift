@@ -21,6 +21,14 @@ public class GameManager : MonoBehaviour
 
     public GameObject PuckButton;
 
+    public GameObject SwitchLevelText;
+
+    public GameObject SwitchLevelAnimation;
+
+    public GameObject StartLevelAnimation;
+
+    public float CameraBorderDistanceEndPointX = 2.0f;
+
     public float EndPointX = 19.0f;
 
     private Vector3 LeftPoint;
@@ -39,34 +47,40 @@ public class GameManager : MonoBehaviour
     {
         InitializedLight();
 
+        PuckBall.transform.position = Player.transform.position - new Vector3(2, 0, 0);
+
         LeftPoint = PuckBall.transform.position;
+
     }
 
     void Update()
     {
-        if (PuckBall.transform.position.x <= LeftPoint.x)
+        if (PuckBall.transform.position.x < LeftPoint.x)
         {
             PuckBall.transform.position = LeftPoint;
 
             return;
         }
 
-        if (Player.transform.position.x <= LeftPoint.x)
+        if (Player.transform.position.x < LeftPoint.x)
         {
             Player.transform.position = LeftPoint;
 
             return;
         }
 
+        //print("Player.transform.position.x:" + Player.transform.position.x + " " + "EndPointX: " + EndPointX);
+
         if (Player.transform.position.x >= EndPointX  || PuckBall.transform.position.x>= EndPointX)
         {
-            Invoke("ChangeScene", 0.1f);
+            SwitchLevelAnimation.SetActive(true);
+            //Invoke("ChangeScene", 0.1f);
 
             return;
         }
     }
 
-    void ChangeScene()
+    public void ChangeScene()
     {
         int nextActiveScene = SceneManager.GetActiveScene().buildIndex+ 1;
 
@@ -95,7 +109,7 @@ public class GameManager : MonoBehaviour
         Invoke("ReStartScene", 0.2f);
     }
 
-    public void ReStartScene()
+    private void ReStartScene()
     {
         string name = SceneManager.GetActiveScene().name;
 
@@ -103,7 +117,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void InitializedLight()
+    private void InitializedLight()
     {
         if(null== LightRoot)
         {
@@ -119,7 +133,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void onEnter(GameObject g, DynamicLight2D.DynamicLight light)
+    private void onEnter(GameObject g, DynamicLight2D.DynamicLight light)
     {
         print("GameObject onEnter :" + gameObject.name + "  " + "onEnter :" + g.name);
 
@@ -129,5 +143,15 @@ public class GameManager : MonoBehaviour
 
             return;
         }
+    }
+
+    public float GetLeftCameraBorder()
+    {
+        return LeftPoint.x + CameraBorderDistanceEndPointX;
+    }
+
+    public float GetRightCameraBorder()
+    {
+        return EndPointX - CameraBorderDistanceEndPointX;
     }
 }
