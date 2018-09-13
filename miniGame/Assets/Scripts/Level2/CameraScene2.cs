@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraScene2 : MonoBehaviour {
 
@@ -10,8 +11,8 @@ public class CameraScene2 : MonoBehaviour {
                     pos3 = new Vector3(-0.7f, -48, -10),
                     pos5 = new Vector3(0, 0, 0);
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         if (GlobalTool.woodJump)
         {
             Start2_4(3);
@@ -71,10 +72,4 @@ public class CameraScene2 : MonoBehaviour {
     {
         Scene2Global.Hide(Scene2Global.bg1);
     }
-}
-
-
-public partial class GlobalTool
-{
-
 }
