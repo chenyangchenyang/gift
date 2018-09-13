@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class JoyStickControl : MonoBehaviour {
 
+    [HideInInspector]
     public GameObject player;
     public bool ToRight = true;
     private GameObject body;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        player = GameManager._instance.Player;
         body = player.transform.GetChild(0).gameObject;
 	}
 	

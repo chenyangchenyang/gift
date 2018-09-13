@@ -33,6 +33,8 @@ public class GlobalDefs : MonoBehaviour {
         {
             GotoPuckBall();
         }
+
+        ChangeCameraLookAt();
     }
 
     public void GotoPuckBall()
@@ -40,6 +42,11 @@ public class GlobalDefs : MonoBehaviour {
         if (GlobalTool.puckState == 0) return;
         GlobalTool.GotoPuckBall();
         GlobalTool.puckState = 0;
+    }
+
+    private void ChangeCameraLookAt()
+    {
+        GameManager._instance.ChangeCameraLookAt(GlobalTool.puckState);
     }
 }
 

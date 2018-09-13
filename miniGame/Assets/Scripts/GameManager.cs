@@ -27,7 +27,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject StartLevelAnimation;
 
-    public float CameraBorderDistanceEndPointX = 2.0f;
+    public float LeftCameraBorderDistanceEndPointX = 2.0f;
+
+    public float RightCameraBorderDistanceEndPointX = 10.0f;
 
     public float EndPointX = 19.0f;
 
@@ -147,11 +149,11 @@ public class GameManager : MonoBehaviour
 
     public float GetLeftCameraBorder()
     {
-        return LeftPoint.x + CameraBorderDistanceEndPointX;
+        return LeftPoint.x + LeftCameraBorderDistanceEndPointX;
     }
 
     public float GetRightCameraBorder()
     {
-        return EndPointX - CameraBorderDistanceEndPointX;
+        return EndPointX - RightCameraBorderDistanceEndPointX;
     }
 }
