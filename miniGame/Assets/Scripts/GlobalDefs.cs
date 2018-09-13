@@ -53,11 +53,16 @@ public partial class GlobalTool
     public static GameObject controlButton;
     public static void Init()
     {
-        puckBall = GameObject.Find("PuckBall");
-        player = GameObject.Find("Player");
+        //puckBall = GameObject.Find("PuckBall");
+        //player = GameObject.Find("Player");
+        puckBall = GameManager._instance.PuckBall;
+        player = GameManager._instance.Player;
+
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("playerBody"), LayerMask.NameToLayer("puck"), true);
         joyStickControl = GameObject.Find("GlobalController").GetComponent<JoyStickControl>();
-        controlButton = GameObject.Find("Button");
+        controlButton = GameManager._instance.PuckButton;
+
+        //controlButton = GameObject.Find("Button");
     }
 
     // 创建帕克法球，并使其自动向当前方向行走数秒

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightControl : MonoBehaviour 
+public class LightStarControl : MonoBehaviour 
 {
 	public float LightOnTime= 3.0f;
 	public float LightDownTime= 3.0f;
