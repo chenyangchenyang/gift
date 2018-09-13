@@ -16,7 +16,7 @@ public class KnifeControl : WrappedBehaviour {
 	void Start () {
         startPos = transform.position;
         wood = GameObject.Find("WoodHand");
-        timePast = -4;
+        timePast = -3;
 	}
 	
 	// Update is called once per frame
