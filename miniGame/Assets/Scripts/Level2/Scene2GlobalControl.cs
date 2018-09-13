@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scene2GlobalControl : MonoBehaviour {
+public class Scene2GlobalControl : WrappedBehaviour {
 
     int dumplings = 4;
 
@@ -51,6 +51,17 @@ public class Scene2GlobalControl : MonoBehaviour {
     {
         Scene2Global.Show(Scene2Global.bg2);
         Scene2Global.bg2Alpha.ChangeVisible(true);
+        Scene2Global.Hide(GameObject.Find("CFish1"));
+        Scene2Global.Hide(GameObject.Find("CFish2"));
+        Scene2Global.Hide(GameObject.Find("CFish3"));
+        Invoke("Blackout", 2);
+        Invoke("Next", 4);
+        Invoke("Whiteout", 6);
+    }
+
+    void Next()
+    {
+        Camera.main.GetComponent<CameraScene2>().Start2_3();
     }
 
     void Reset2Hands()

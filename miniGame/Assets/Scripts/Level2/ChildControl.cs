@@ -37,5 +37,27 @@ public class ChildControl : MonoBehaviour {
             state += 1;
             foreground.SwitchState();
         }
+        else
+        {
+            Invoke("Blackout", 1.5f);
+            Invoke("Next", 3.5f);
+            Invoke("Whiteout", 4.5f);
+        }
+    }
+
+    void Blackout()
+    {
+        GlobalTool.Blackout();
+    }
+
+
+    void Whiteout()
+    {
+        GlobalTool.Whiteout();
+    }
+
+    void Next()
+    {
+        GameObject.Find("Main Camera").GetComponent<CameraScene2>().Start2_2();
     }
 }

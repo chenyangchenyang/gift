@@ -7,6 +7,7 @@ TagManager:
   - onlyTrigger
   - switch
   - OldMan
+  - Foreground2_1
   layers:
   - Default
   - TransparentFX
@@ -16,10 +17,11 @@ TagManager:
   - UI
   - 
   - 
-  - puck
+  - paint
   - playerBody
   - 
   - 
+  - puck
   - 
   - 
   - 
@@ -35,15 +37,26 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - foreground
+  - background
   - 
   - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: background
+    uniqueID: 1249789587
+    locked: 0
+  - name: main
+    uniqueID: 3232018521
+    locked: 0
   - name: Player
     uniqueID: 3791399631
+    locked: 0
+  - name: foreground
+    uniqueID: 21954327
+    locked: 0
+  - name: UI
+    uniqueID: 678707041
     locked: 0
