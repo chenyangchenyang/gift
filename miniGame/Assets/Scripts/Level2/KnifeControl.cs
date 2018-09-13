@@ -1,0 +1,105 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class KnifeControl : WrappedBehaviour {
+
+    private Vector3 offset;
+    private Vector3 startPos;
+    private GameObject wood;
+    private float swipeDist;
+    private float timePast;
+    public int woodState = 1;
+    private bool reseted = false;
+	// Use this for initialization
+	void Start () {
+        startPos = transform.position;
+        wood = GameObject.Find("WoodHand");
+        timePast = -4;
+	}
+	
+	// Update is called once per frame
+	void Update ()
+    {
+        timePast += Time.deltaTime;
+	}
+
+    private void OnMouseDown()
+    {
+        offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    private void OnMouseDrag()
+    {
+        if (!reseted && woodState == 1)
+        {
+            timePast = 0;
+            reseted = true;
+        }
+        Vector3 tmp = offset + Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (timePast >= 4 && (wood.transform.position.x - 7.6 <= transform.position.x &&
+                transform.position.x <= wood.transform.position.x - 2.6))
+        {
+            // TODO:播放木头声音
+            swipeDist += Vector3.Distance(tmp, transform.position);
+            if (swipeDist > 2)
+            {
+                timePast = 0;
+                swipeDist = 0;
+                if (woodState == 1)
+                {
+                    ShowS2();
+                }
+                if (woodState == 2)
+                {
+                    ShowS3();
+                    // 切换到离别场景
+                    Invoke("Blackout", 3);
+                    Invoke("Next", 5);
+                }
+                woodState += 1;
+                wood.GetComponent<SpriteRenderer>().sprite = 
+                    Resources.Load("img/第二关场景3/mutou" + woodState, new Sprite().GetType()) as Sprite;
+                if (woodState == 5)
+                {
+                    // 切换到下一个场景
+                    Invoke("Blackout", 2);
+                }
+            }
+        }
+
+        transform.position = tmp;
+    }
+
+    private void OnMouseUp()
+    {
+        transform.position = startPos;
+    }
+
+    void Next()
+    {
+        SceneManager.LoadScene("第二关场景5");
+    }
+
+    void ShowS2()
+    {
+        GameObject.Find("sentence2").GetComponent<Scene22AlphaControl>().ChangeVisible(true);
+        Invoke("HideS2", 2);
+    }
+    void HideS2()
+    {
+        GameObject.Find("sentence2").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+    }
+    void ShowS3()
+    {
+        GameObject.Find("sentence3").GetComponent<Scene22AlphaControl>().ChangeVisible(true);
+        Invoke("HideS3", 2);
+    }
+
+    void HideS3()
+    {
+        GameObject.Find("sentence3").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+
+    }
+}

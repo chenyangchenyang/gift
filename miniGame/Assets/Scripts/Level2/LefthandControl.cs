@@ -24,6 +24,10 @@ public class LefthandControl : MonoBehaviour
 
 public class Scene2Global
 {
+    public static int pCfish = 0;
+    public static Vector3[] cfish = new Vector3[3];
+    public static bool cheering = false;
+    public static int fishCount = 0;
     public static Scene22AlphaControl leftHandAlpha, rightHandAlpha, 
         leftHandPiAlpha, rightHandXianAlpha, dumplings5Alpha, dumplings6Alpha,
         twoHandsAlpha, bg1Alpha, bg2Alpha;
@@ -54,6 +58,10 @@ public class Scene2Global
         rightHandPos = RightHand.transform.position;
         leftHandPiPos = leftHandPi.transform.position;
         rightHandXianPos = rightHandXian.transform.position;
+
+        //GameObject.Find("CFish1").transform.GetChild(0).gameObject.GetComponent<Scene22AlphaControl>().SetVisible(false);
+        //GameObject.Find("CFish2").transform.GetChild(0).gameObject.GetComponent<Scene22AlphaControl>().SetVisible(false);
+        //GameObject.Find("CFish3").transform.GetChild(0).gameObject.GetComponent<Scene22AlphaControl>().SetVisible(false);
     }
 
     public static void Hide(GameObject o)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightSwitchControl : MonoBehaviour
+public class SwitchLight : MonoBehaviour
 {
 	private float UpDistance = 100.0f;
 
@@ -47,7 +47,7 @@ public class LightSwitchControl : MonoBehaviour
 	{
 		foreach(GameObject Light2D in Light2Ds)
 		{
-			if (Light2D.transform.position.y < 50) 
+			if (Light2D.transform.position.y < 10) 
 			{
 				Vector3 Position = Light2D.transform.position;
 
