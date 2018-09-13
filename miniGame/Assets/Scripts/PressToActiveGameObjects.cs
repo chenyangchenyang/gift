@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PressToActiveGameObjects : MonoBehaviour
 {
-    public GameObject[] ActiveObject;
+    public GameObject[] ActiveObjects;
     public GameObject[] DestoryObjects;
 
     public void OnMouseDown()
     {
-        if(null != ActiveObject)
+        if(null != ActiveObjects)
         {
-            for (int i = 0; i < ActiveObject.Length; ++i)
+            for (int i = 0; i < ActiveObjects.Length; ++i)
             {
-                ActiveObject[i].SetActive(true);
+                ActiveObjects[i].SetActive(true);
             }
         }
        
