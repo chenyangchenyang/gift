@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchLight : MonoBehaviour
+public class LightSwitchControl : MonoBehaviour
 {
 	private float UpDistance = 100.0f;
 

@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
         if (PuckBall.transform.position.x < LeftPoint.x)
         {
             PuckBall.transform.position = LeftPoint;

@@ -20,7 +20,9 @@ public class PostBox : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if("Body" == collision.collider.gameObject.name)
+        GameObject collisionRoot= collision.collider.gameObject.transform.root.gameObject;
+
+        if(collisionRoot == GameManager._instance.Player || collisionRoot == GameManager._instance.PuckBall)
         {
             print(collision.collider.gameObject.name);
 
@@ -45,7 +47,7 @@ public class PostBox : MonoBehaviour {
 
     private void PausePlayerMove()
     {
-        PlayerControl pcl= GameManager._instance.Player.GetComponent<PlayerControl>();
+        PlayerControl pcl= GameManager._instance.Player.GetComponent<PlayerControl>();       
 
         pcl.PauseMove();
     }

@@ -6,6 +6,7 @@ public class JoyStickControl : MonoBehaviour {
 
     [HideInInspector]
     public GameObject player;
+
     public bool ToRight = true;
     private GameObject body;
 	// Use this for initialization
@@ -13,7 +14,7 @@ public class JoyStickControl : MonoBehaviour {
     {
         player = GameManager._instance.Player;
         body = player.transform.GetChild(0).gameObject;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {

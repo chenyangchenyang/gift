@@ -34,3 +34,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+miniGame/Assets/Scripts/LightSwitchControl.cs
+miniGame/Assets/Scripts/LightSwitchControl.cs
+miniGame/Assets/Scripts/GameManager.cs
+miniGame/Assets/Scenes/Level1.unity
