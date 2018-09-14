@@ -65,6 +65,7 @@ public class KnifeControl : WrappedBehaviour {
                 {
                     // 切换到下一个场景
                     Invoke("Blackout", 2);
+                    Invoke("Next2", 4);
                 }
             }
         }

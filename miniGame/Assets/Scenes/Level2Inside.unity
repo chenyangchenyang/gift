@@ -292,7 +292,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 110411881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50.28, y: -12.49, z: 0}
+  m_LocalPosition: {x: -50.13, y: -11.74, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 1032112562}
@@ -314,7 +314,9 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   lastPosition: {x: 0, y: 0}
   lastDir: {x: 0, y: 0}
+  startSpeed: 0
   speed: 2
+  addSpeed: 0
 --- !u!95 &110411885
 Animator:
   serializedVersion: 3
@@ -472,6 +474,41 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: New Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 224155339364060558, guid: bb94f1a370d591a459b33bdfe67bdf6c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 659.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224155339364060558, guid: bb94f1a370d591a459b33bdfe67bdf6c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -257.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430652639096672, guid: bb94f1a370d591a459b33bdfe67bdf6c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224155339364060558, guid: bb94f1a370d591a459b33bdfe67bdf6c,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 281.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224155339364060558, guid: bb94f1a370d591a459b33bdfe67bdf6c,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 267.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114656700571758630, guid: bb94f1a370d591a459b33bdfe67bdf6c,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b3128c0161e59e64990e851ec37d86f3,
+        type: 3}
+    - target: {fileID: 114656700571758630, guid: bb94f1a370d591a459b33bdfe67bdf6c,
+        type: 2}
+      propertyPath: m_Type
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb94f1a370d591a459b33bdfe67bdf6c, type: 2}
@@ -1768,7 +1805,9 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   lastPosition: {x: 0, y: 0}
   lastDir: {x: 0, y: 0}
-  speed: 1.55
+  startSpeed: 0
+  speed: 7.53
+  addSpeed: -10
 --- !u!50 &682442892
 Rigidbody2D:
   serializedVersion: 4
@@ -1796,7 +1835,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 682442889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.6, y: -11.58, z: 0}
+  m_LocalPosition: {x: -52.51, y: -11.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1728087583}
