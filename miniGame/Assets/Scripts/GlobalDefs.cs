@@ -14,7 +14,7 @@ public class GlobalDefs : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         puckTime += Time.deltaTime;
-        if (GlobalTool.puckState == 1 && puckTime >= 2)
+        if (GlobalTool.puckState == 1 && puckTime >= PuckTimeLength)
         {
             GotoPuckBall();
         }

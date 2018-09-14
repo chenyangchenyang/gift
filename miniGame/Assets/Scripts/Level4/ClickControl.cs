@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickControl : MonoBehaviour {
+public class ClickControl : WrappedBehaviour {
 
-    private int state = 1;
+    private int state = 0;
     private float timePast = 0;
     private GameObject player;
     private GameObject huiyiFlag;
     private GameObject[] soul = new GameObject[8];
-
-    private int soulId = 0;
     // Use this for initialization
     void Start()
     {
@@ -20,6 +18,8 @@ public class ClickControl : MonoBehaviour {
         {
             soul[i] = GameObject.Find("soul" + (i + 1));
         }
+        Physics2D.IgnoreLayerCollision(
+            LayerMask.NameToLayer("playerBody"), LayerMask.NameToLayer("UI"));
     }
 	
 	// Update is called once per frame
@@ -31,22 +31,44 @@ public class ClickControl : MonoBehaviour {
     {
         if (timePast > 3)
         {
-            if (state < 4)
+
+            if (state < 3)
             {
-                if (state == 0)
-                {
-                    soul[state].transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
-                    soul[state].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
-                }
-                else
-                {
-                    soul[soulId].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
-                    soul[soulId + 1].transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
-                    soul[soulId + 1].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
-                    Camera.main.GetComponent<CameraControl>().lookGameObject = player;
-                }
+                soul[state].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+                soul[state + 1].transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
+                soul[state + 1].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
                 ++state;
             }
+            if (state == 3)
+            {
+                for (int i = 3; i < 8; ++i)
+                {
+                    Invoke("ShowSoul", (i - 3) * 3);
+                }
+                transform.position = new Vector3(1000, 1000, 0);
+            }
+        }
+    }
+
+    void ShowSoul()
+    {
+        if (state == 7)
+        {
+            soul[state].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+            for (int i = 0; i < 8; ++i)
+            {
+                soul[i].transform.position = new Vector3(-10000, -10000, 0);
+            }
+            Camera.main.GetComponent<CameraControl>().lookGameObject = player;
+            Invoke("Whiteout", 2);
+        } 
+        else
+        {
+            soul[state].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+            soul[state + 1].transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
+            soul[state + 1].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
+            Camera.main.GetComponent<CameraControl>().lookGameObject = player;
+            ++state;
         }
     }
 }

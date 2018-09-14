@@ -11,19 +11,28 @@ public class PlayerControl : MonoBehaviour
     public Vector2 lastPosition;
     public Vector2 lastDir;
 	private Text TextComponent;
-    [SerializeField]
     private float speed = 1;
+    [SerializeField]
+    private float addSpeed = 0;
 
-    private float lastSpeed = 0;
+    [SerializeField]
+    private float startSpeed;
+    private float lastSpeed;
 
     void Start () 
 	{
+        lastSpeed = speed;
         lastPosition = gameObject.GetComponent<Rigidbody2D>().position;
 	}
 	
 
 	void Update () 
 	{
+        speed += Time.deltaTime * addSpeed * Mathf.Log(startSpeed - speed + 2);
+        if (speed < 0)
+        {
+            speed = 0;
+        }
         var rb = GetComponent<Rigidbody2D>();
         if (move)
         {
@@ -32,6 +41,7 @@ public class PlayerControl : MonoBehaviour
         }   
         else
         {
+            speed = startSpeed;
             rb.sharedMaterial.friction = 1;
         }
     }

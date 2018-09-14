@@ -8,6 +8,7 @@ public class HuiyiControl : WrappedBehaviour
     public GameObject player;
     public GameObject huiyiFlag;
     public GameObject[] soul = new GameObject[8];
+    public GameObject clickBox;
     private int soulId = 0;
     // Use this for initialization
     void Start()
@@ -18,6 +19,7 @@ public class HuiyiControl : WrappedBehaviour
         {
             soul[i] = GameObject.Find("soul" + (i + 1));
         }
+        clickBox = GameObject.Find("ClickBox");
     }
 
     // Update is called once per frame
@@ -29,11 +31,11 @@ public class HuiyiControl : WrappedBehaviour
             {
                 showed = true;
                 Invoke("Blackout", 0);
-                for (int i = 0; i < 8; ++i)
-                {
-                    Invoke("ShowSoul", (i + 1) * 3);
-                }
-            }
+                soul[0].transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
+                soul[0].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
+                clickBox.transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
+                Camera.main.GetComponent<CameraControl>().lookGameObject = null;
+            }   
         }
     }
 
