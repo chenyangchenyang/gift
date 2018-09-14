@@ -33,14 +33,25 @@ public class GameManager : MonoBehaviour
 
     public float EndPointX = 19.0f;
 
+    public float BgAudioVolumToZeroDeleta = 2.0f;
+
+    public AudioClip []FootStepAudios;
+
+    public AudioClip BgAudioClip;
+
     private Vector3 LeftPoint;
+
+    private AudioSource FootAudioSource;
+
+    [HideInInspector]
+    public AudioSource BgAudioSource;
+
+    private AudioSource PuckSkillAudioSource;
 
     [HideInInspector]
     public string PlayerPosition = "PlayerPosition";
     [HideInInspector]
     public string CameraDistancePlayer = "CameraDistancePlayer";
-
-    private string PreSceneName = "PreSceneName";
 
     private void Awake()
     {      
@@ -56,11 +67,26 @@ public class GameManager : MonoBehaviour
     {
         InitializedLight();
 
-        InitializedPosition();      
+        InitializedPosition();
 
         PuckBall.transform.position = Player.transform.position - new Vector3(2, 0, 0);
 
         LeftPoint = PuckBall.transform.position;
+
+        InitializedAudioSource(); 
+    }
+
+    private void InitializedAudioSource()
+    {
+        PuckSkillAudioSource = GetComponent<AudioSource>();
+        PuckSkillAudioSource.Stop();
+
+        FootAudioSource = Player.GetComponent<AudioSource>();      
+
+        BgAudioSource = CaremaObject.GetComponent<AudioSource>();
+        BgAudioSource.clip = BgAudioClip;
+        BgAudioSource.time = GlobalTool.BgAudioTime;
+        BgAudioSource.Play();
     }
 
     private void InitializedPosition()
@@ -108,6 +134,8 @@ public class GameManager : MonoBehaviour
     {
         GlobalTool.DeleteAll();
 
+        GlobalTool.BgAudioTime = 0.0f;
+
         int nextActiveScene = SceneManager.GetActiveScene().buildIndex+ 1;
 
         if (nextActiveScene >= SceneManager.sceneCountInBuildSettings)
@@ -123,10 +151,14 @@ public class GameManager : MonoBehaviour
         if(0 == idx)
         {
             CaremaObject.GetComponent<CameraControl>().lookGameObject = Player;
+
+            PuckSkillAudioSource.Stop();
         }
         else if(1 == idx)
         {
             CaremaObject.GetComponent<CameraControl>().lookGameObject = PuckBall;
+
+            PuckSkillAudioSource.Play();
         }
     }
 
@@ -136,7 +168,9 @@ public class GameManager : MonoBehaviour
     }
 
     private void ReStartScene()
-    {    
+    {
+        GlobalTool.BgAudioTime = BgAudioSource.time;
+
         string name = SceneManager.GetActiveScene().name;
 
         SceneManager.LoadScene(name);
@@ -195,4 +229,18 @@ public class GameManager : MonoBehaviour
         string str= v.x.ToString() + " " + v.y.ToString() + " " + v.z.ToString();
         return str;
     }
+
+
+    public void PlayFootStep()
+    {
+        int clipIdx= Random.Range(0, FootStepAudios.Length);
+
+        FootAudioSource.clip = FootStepAudios[clipIdx];
+        FootAudioSource.Play();
+    }
+}
+
+public partial class GlobalTool
+{
+    static public float BgAudioTime = 0.0f;
 }

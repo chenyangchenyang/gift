@@ -56,4 +56,14 @@ public class PlayerControl : MonoBehaviour
     {
         speed = lastSpeed;
     }
+
+    public void PlayFootStep()
+    {
+        if(gameObject != GameManager._instance.Player)
+        {
+            return;
+        }
+
+        GameManager._instance.PlayFootStep();
+    }
 }

@@ -111,11 +111,8 @@ public class KnifeControl : WrappedBehaviour {
 }
 
 public partial class GlobalTool
-
-{
-
+{ 
     static private bool HasKey(string key)
-
     {
         return Saves.ContainsValue(key);
     }
@@ -132,8 +129,6 @@ public partial class GlobalTool
         Saves.Remove(key);
         Saves.Add(key, value);
     }
-
-
 
     static public string GetString(string key)
 
