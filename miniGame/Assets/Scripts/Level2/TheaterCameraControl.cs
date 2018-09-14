@@ -74,6 +74,6 @@ public class TheaterCameraControl : MonoBehaviour {
 
 public partial class GlobalTool
 {
-    public static bool reenter = false;
-    public static bool reenterNotHandled = false;
+    public static bool reenter = true;
+    public static bool reenterNotHandled = true;
 }
