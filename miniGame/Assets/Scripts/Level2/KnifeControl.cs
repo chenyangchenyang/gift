@@ -79,7 +79,6 @@ public class KnifeControl : WrappedBehaviour {
 
     void Next()
     {
-
         SceneManager.LoadScene("Level2Scene5");
     }
 
