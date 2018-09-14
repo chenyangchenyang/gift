@@ -9,7 +9,7 @@ public class LeaveFlagControl : MonoBehaviour {
     private bool left = false;
 	// Use this for initialization
 	void Start () {
-        player = GameObject.Find("S2Oldman");
+        player = GameObject.Find("Player");
         parent = GameObject.Find("Girl");
 	}
 	

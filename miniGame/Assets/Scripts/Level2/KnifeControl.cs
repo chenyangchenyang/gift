@@ -16,7 +16,10 @@ public class KnifeControl : WrappedBehaviour {
 	void Start () {
         startPos = transform.position;
         wood = GameObject.Find("WoodHand");
-        timePast = -3;
+        if (woodState == 1)
+        {
+            timePast = -2;
+        }
 	}
 	
 	// Update is called once per frame
@@ -32,13 +35,18 @@ public class KnifeControl : WrappedBehaviour {
 
     private void OnMouseDrag()
     {
+        int waitTime = 4;
+        if (woodState >= 3)
+        {
+            waitTime = 2;
+        }
         if (!reseted && woodState == 1)
         {
             timePast = 0;
             reseted = true;
         }
         Vector3 tmp = offset + Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (timePast >= 4 && (wood.transform.position.x - 7.6 <= transform.position.x &&
+        if (timePast >= waitTime && (wood.transform.position.x - 7.6 <= transform.position.x &&
                 transform.position.x <= wood.transform.position.x - 2.6))
         {
             // TODO:播放木头声音
@@ -65,6 +73,9 @@ public class KnifeControl : WrappedBehaviour {
                 {
                     // 切换到下一个场景
                     Invoke("Blackout", 2);
+                    Invoke("Next2", 4);
+                    GlobalTool.reenter = true;
+                    GlobalTool.reenterNotHandled = true;
                 }
             }
         }
@@ -79,7 +90,12 @@ public class KnifeControl : WrappedBehaviour {
 
     void Next()
     {
-        SceneManager.LoadScene("第二关场景5");
+        SceneManager.LoadScene("Level2Scene5");
+    }
+
+    void Next2()
+    {
+        SceneManager.LoadScene("Level2Inside");
     }
 
     void ShowS2()
@@ -102,4 +118,7 @@ public class KnifeControl : WrappedBehaviour {
         GameObject.Find("sentence3").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
 
     }
+}
+
+public partial class GlobalTool {
 }
