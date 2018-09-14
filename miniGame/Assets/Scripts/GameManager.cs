@@ -39,6 +39,8 @@ public partial class GameManager : MonoBehaviour
 
     public GameObject BackGroundAudio;
 
+    public GameObject PlayerDeathAnimation;
+
     private Vector3 LeftPoint;
 
     private AudioSource FootAudioSource;
@@ -52,13 +54,14 @@ public partial class GameManager : MonoBehaviour
     [HideInInspector]
     public string CameraDistancePlayer = "CameraDistancePlayer";
 
+
     private void Awake()
     {      
          _instance = this;
     }
 
     private void Start()
-    {
+    {        
         Initialized();
     }
 
@@ -72,7 +75,7 @@ public partial class GameManager : MonoBehaviour
 
         LeftPoint = PuckBall.transform.position;
 
-        InitializedAudioSource(); 
+        InitializedAudioSource();
     }
 
     private void InitializedAudioSource()
@@ -159,8 +162,8 @@ public partial class GameManager : MonoBehaviour
     }
 
     public void ReStart()
-    {
-        Invoke("ReStartScene", 0.2f);
+    {       
+        Invoke("ReStartScene", 5.0f);
     }
 
     private void ReStartScene()
@@ -193,8 +196,20 @@ public partial class GameManager : MonoBehaviour
 
     private void onEnter(GameObject g, DynamicLight2D.DynamicLight light)
     {
-        if (g.transform.root.gameObject == Player || g.transform.root.gameObject == PuckBall)
+        GameObject collisionGameObject = g.transform.root.gameObject;
+
+        if (collisionGameObject == Player || collisionGameObject == PuckBall)
         {
+            
+            print("PlayerDeathAnimation.transform.position:" + PlayerDeathAnimation.transform.position);
+            print("Player.transform.position:" + Player.transform.position);
+
+            PlayerDeathAnimation.transform.position = Player.transform.position;
+
+            collisionGameObject.SetActive(false);
+
+            PlayerDeathAnimation.SetActive(true);
+
             GameManager._instance.ReStart();
 
             return;
