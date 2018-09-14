@@ -79,7 +79,6 @@ public class KnifeControl : WrappedBehaviour {
 
     void Next()
     {
-<<<<<<< HEAD
 
         SceneManager.LoadScene("Level2Scene5");
     }
@@ -87,9 +86,6 @@ public class KnifeControl : WrappedBehaviour {
     void Next2()
     {
         SceneManager.LoadScene("Level2Inside");
-=======
-        SceneManager.LoadScene("第二关场景5");
->>>>>>> fed2a0e5de14959c998c95f33f2c848dccaeb691
     }
 
     void ShowS2()
