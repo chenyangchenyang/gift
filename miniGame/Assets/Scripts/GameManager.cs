@@ -35,9 +35,16 @@ public class GameManager : MonoBehaviour
 
     private Vector3 LeftPoint;
 
+    [HideInInspector]
+    public string PlayerPosition = "PlayerPosition";
+    [HideInInspector]
+    public string CameraDistancePlayer = "CameraDistancePlayer";
+
+    private string PreSceneName = "PreSceneName";
+
     private void Awake()
-    {
-        _instance = this;
+    {      
+         _instance = this;
     }
 
     private void Start()
@@ -49,10 +56,26 @@ public class GameManager : MonoBehaviour
     {
         InitializedLight();
 
+        InitializedPosition();      
+
         PuckBall.transform.position = Player.transform.position - new Vector3(2, 0, 0);
 
         LeftPoint = PuckBall.transform.position;
+    }
 
+    private void InitializedPosition()
+    {
+        if(!GlobalTool.Saves.ContainsKey(PlayerPosition))
+        {
+            return;
+        }        
+        string playerPositionStr  = GlobalTool.GetString(PlayerPosition);
+        string cameraDistanceStr  = GlobalTool.GetString(CameraDistancePlayer);
+
+        print("playerPositionStr :"+ playerPositionStr);
+
+        Player.transform.position = String2Vector3(playerPositionStr);
+        CaremaObject.transform.position = Player.transform.position + String2Vector3(cameraDistanceStr);
     }
 
     void Update()
@@ -71,13 +94,11 @@ public class GameManager : MonoBehaviour
 
             return;
         }
-
-        //print("Player.transform.position.x:" + Player.transform.position.x + " " + "EndPointX: " + EndPointX);
+      
 
         if (Player.transform.position.x >= EndPointX  || PuckBall.transform.position.x>= EndPointX)
         {
             SwitchLevelAnimation.SetActive(true);
-            //Invoke("ChangeScene", 0.1f);
 
             return;
         }
@@ -85,6 +106,8 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene()
     {
+        GlobalTool.DeleteAll();
+
         int nextActiveScene = SceneManager.GetActiveScene().buildIndex+ 1;
 
         if (nextActiveScene >= SceneManager.sceneCountInBuildSettings)
@@ -113,7 +136,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void ReStartScene()
-    {
+    {    
         string name = SceneManager.GetActiveScene().name;
 
         SceneManager.LoadScene(name);
@@ -138,8 +161,6 @@ public class GameManager : MonoBehaviour
 
     private void onEnter(GameObject g, DynamicLight2D.DynamicLight light)
     {
-        print("GameObject onEnter :" + gameObject.name + "  " + "onEnter :" + g.name);
-
         if (g.transform.root.gameObject == Player || g.transform.root.gameObject == PuckBall)
         {
             GameManager._instance.ReStart();
@@ -156,5 +177,22 @@ public class GameManager : MonoBehaviour
     public float GetRightCameraBorder()
     {
         return EndPointX - RightCameraBorderDistanceEndPointX;
+    }
+
+    public Vector3 String2Vector3(string v3)
+    {
+        string []vs= v3.Split(' ');
+
+        float x = float.Parse(vs[0]);
+        float y = float.Parse(vs[1]);
+        float z = float.Parse(vs[2]);
+
+        return new Vector3(x, y, z);
+    }
+
+    public string Vector3ToString(Vector3 v)
+    {
+        string str= v.x.ToString() + " " + v.y.ToString() + " " + v.z.ToString();
+        return str;
     }
 }

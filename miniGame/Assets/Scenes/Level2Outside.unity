@@ -292,7 +292,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 110411881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.03, y: -93.45, z: 0}
+  m_LocalPosition: {x: 5.87, y: -93.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1032112562}
@@ -676,7 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d3138bf07ab744f99b0b38add38656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveObject: {fileID: 388286954}
+  ActiveObjects: []
   DestoryObjects:
   - {fileID: 628653934}
   - {fileID: 1662245219}
@@ -814,13 +814,18 @@ Prefab:
     - target: {fileID: 114569835811029574, guid: a22ff9d803192404aa60bb57aee8da3d,
         type: 2}
       propertyPath: EndPointX
-      value: 20
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 114569835811029574, guid: a22ff9d803192404aa60bb57aee8da3d,
         type: 2}
       propertyPath: StartLevelAnimation
       value: 
       objectReference: {fileID: 8663782}
+    - target: {fileID: 114569835811029574, guid: a22ff9d803192404aa60bb57aee8da3d,
+        type: 2}
+      propertyPath: RightCameraBorderDistanceEndPointX
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a22ff9d803192404aa60bb57aee8da3d, type: 2}
   m_IsPrefabParent: 0
@@ -1051,7 +1056,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 429737918}
   m_LocalRotation: {x: -0, y: -0, z: -0.60408014, w: 0.7969236}
-  m_LocalPosition: {x: -0.024999619, y: 0.31200027, z: 0.012999998}
+  m_LocalPosition: {x: 0.06, y: 0.34, z: 0.012999998}
   m_LocalScale: {x: 0.17936565, y: 0.16213137, z: 1}
   m_Children: []
   m_Father: {fileID: 1032112562}
@@ -2262,7 +2267,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1297090003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.67, y: -90.29, z: -50}
+  m_LocalPosition: {x: 8.24, y: -90.16, z: -50}
   m_LocalScale: {x: 0.78, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2321,7 +2326,7 @@ Camera:
   far clip plane: 1000
   field of view: 116
   orthographic: 1
-  orthographic size: 5.0503616
+  orthographic size: 5.3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2546,7 +2551,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1485909098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -69.28, y: -14.22, z: 0.23138754}
+  m_LocalPosition: {x: -69.1, y: -13.74, z: 0.23138754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1217884473}
@@ -2834,7 +2839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d3138bf07ab744f99b0b38add38656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveObject: {fileID: 293092490}
+  ActiveObjects: []
   DestoryObjects: []
 --- !u!60 &1662245223
 PolygonCollider2D:
@@ -3424,7 +3429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d3138bf07ab744f99b0b38add38656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveObject: {fileID: 1662245219}
+  ActiveObjects: []
   DestoryObjects: []
 --- !u!212 &1859363216
 SpriteRenderer:
@@ -3693,9 +3698,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -503567665
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: edbfbe57618a17e4aa83c00582246294, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3742,7 +3747,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1992380915}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -76.4, y: -16.51, z: 0.23138754}
+  m_LocalPosition: {x: -76.22, y: -16.03, z: 0.23138754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1217884473}
@@ -3781,7 +3786,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -503567665
   m_SortingLayer: 3
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 82de7b7fa4b5ac14e839df7e2a8859f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

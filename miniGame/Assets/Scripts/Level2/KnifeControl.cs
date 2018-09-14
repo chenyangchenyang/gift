@@ -16,10 +16,7 @@ public class KnifeControl : WrappedBehaviour {
 	void Start () {
         startPos = transform.position;
         wood = GameObject.Find("WoodHand");
-        if (woodState == 1)
-        {
-            timePast = -2;
-        }
+        timePast = -3;
 	}
 	
 	// Update is called once per frame
@@ -35,18 +32,13 @@ public class KnifeControl : WrappedBehaviour {
 
     private void OnMouseDrag()
     {
-        int waitTime = 4;
-        if (woodState >= 3)
-        {
-            waitTime = 2;
-        }
         if (!reseted && woodState == 1)
         {
             timePast = 0;
             reseted = true;
         }
         Vector3 tmp = offset + Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (timePast >= waitTime && (wood.transform.position.x - 7.6 <= transform.position.x &&
+        if (timePast >= 4 && (wood.transform.position.x - 7.6 <= transform.position.x &&
                 transform.position.x <= wood.transform.position.x - 2.6))
         {
             // TODO:播放木头声音
@@ -73,9 +65,6 @@ public class KnifeControl : WrappedBehaviour {
                 {
                     // 切换到下一个场景
                     Invoke("Blackout", 2);
-                    Invoke("Next2", 4);
-                    GlobalTool.reenter = true;
-                    GlobalTool.reenterNotHandled = true;
                 }
             }
         }
@@ -90,6 +79,7 @@ public class KnifeControl : WrappedBehaviour {
 
     void Next()
     {
+<<<<<<< HEAD
 
         SceneManager.LoadScene("Level2Scene5");
     }
@@ -97,6 +87,9 @@ public class KnifeControl : WrappedBehaviour {
     void Next2()
     {
         SceneManager.LoadScene("Level2Inside");
+=======
+        SceneManager.LoadScene("第二关场景5");
+>>>>>>> fed2a0e5de14959c998c95f33f2c848dccaeb691
     }
 
     void ShowS2()
@@ -131,14 +124,10 @@ public partial class GlobalTool
         return Saves.ContainsValue(key);
     }
 
-
-
     static public void DeleteAll()
-
     {
         Saves.Clear();
     }
-
 
 
     static public void SetString(string key, string value)
