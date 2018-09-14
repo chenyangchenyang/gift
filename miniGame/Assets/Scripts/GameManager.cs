@@ -200,13 +200,12 @@ public partial class GameManager : MonoBehaviour
 
         if (collisionGameObject == Player || collisionGameObject == PuckBall)
         {
-            
-            print("PlayerDeathAnimation.transform.position:" + PlayerDeathAnimation.transform.position);
-            print("Player.transform.position:" + Player.transform.position);
+            PlayerDeathAnimation.transform.position = collisionGameObject.transform.position;
 
-            PlayerDeathAnimation.transform.position = Player.transform.position;
-
-            collisionGameObject.SetActive(false);
+            collisionGameObject.transform.Translate(0, 10000.0f, 0);
+            collisionGameObject.transform.position = new Vector3(collisionGameObject.transform.position.x, collisionGameObject.transform.position.y + 10000.0f,
+                collisionGameObject.transform.position.z);
+            //collisionGameObject.SetActive(false);
 
             PlayerDeathAnimation.SetActive(true);
 
