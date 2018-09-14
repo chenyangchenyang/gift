@@ -79,7 +79,15 @@ public partial class GlobalTool
         Show(puckBall);
         puckBall.transform.position = player.transform.position;
         PlayerControl playerControl = player.GetComponent<PlayerControl>();
-        puckBall.GetComponent<PlayerControl>().dir = playerControl.lastDir;
+        if (player.transform.GetChild(0).localScale.x > 0)
+        {
+            puckBall.GetComponent<PlayerControl>().dir = new Vector2(1, 0);
+        }
+        else
+        {
+
+            puckBall.GetComponent<PlayerControl>().dir = new Vector2(-1, 0);
+        }
         puckBall.GetComponent<PlayerControl>().move = true;
         puckBall.transform.GetChild(0).localScale = player.transform.GetChild(0).localScale;
         //controlButton.SetActive(false);
