@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public partial class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
 
@@ -43,11 +43,10 @@ public class GameManager : MonoBehaviour
 
     private AudioSource FootAudioSource;
 
-    [HideInInspector]
-    public AudioSource BgAudioSource;
-
     private AudioSource PuckSkillAudioSource;
 
+    [HideInInspector]
+    public AudioSource BgAudioSource;
     [HideInInspector]
     public string PlayerPosition = "PlayerPosition";
     [HideInInspector]
@@ -238,9 +237,52 @@ public class GameManager : MonoBehaviour
         FootAudioSource.clip = FootStepAudios[clipIdx];
         FootAudioSource.Play();
     }
+
+    public void SubAudioInTime(AudioSource audioSource, float time)
+    {
+        SetSubAudio(audioSource, time);
+        StartSubAudio();
+    }
 }
 
 public partial class GlobalTool
 {
     static public float BgAudioTime = 0.0f;
+}
+
+public partial class GameManager
+{
+    private AudioSource MySubAudioSource;
+    private float SubAudioDelteTime;
+    private int SubAudioVolumDownCount;
+    private float SubAudioEachDownTime;
+    private float SubAudioEachDownValue;
+
+    public void SetSubAudio(AudioSource audioSource, float time)
+    {
+        MySubAudioSource = audioSource;
+        SubAudioDelteTime     = time;
+
+        SubAudioVolumDownCount= 20;
+
+        SubAudioEachDownTime = time / SubAudioVolumDownCount;
+        SubAudioEachDownValue = MySubAudioSource.volume / SubAudioVolumDownCount;        
+    }
+
+    public void StartSubAudio()
+    {
+        StartCoroutine(RunSubBgAudio());
+    }
+
+    IEnumerator RunSubBgAudio()
+    {
+        while (MySubAudioSource.volume > 0)
+        {
+            print("MyAudioSource.volume:" + MySubAudioSource.volume);
+
+            MySubAudioSource.volume -= SubAudioEachDownValue;
+
+            yield return new WaitForSeconds(SubAudioEachDownTime);
+        }
+    }
 }
