@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scene22AlphaControl : MonoBehaviour {
 
-    float speed = 2.5f;
+    public float speed = 2.5f;
     public bool visible = true;
     private SpriteRenderer renderer;
     
