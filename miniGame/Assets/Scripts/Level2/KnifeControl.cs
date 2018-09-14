@@ -103,3 +103,30 @@ public class KnifeControl : WrappedBehaviour {
 
     }
 }
+
+public partial class GlobalTool
+{
+   static private bool HasKey(string key)
+   {
+        return Saves.ContainsValue(key);
+   }
+
+    static public void DeleteAll()
+    {
+        Saves.Clear();
+    }
+
+    static public void SetString(string key,string value)
+    {
+        Saves.Remove(key);
+
+        Saves.Add(key, value);
+    }
+
+    static public string GetString(string key)
+    {
+        return Saves[key];
+    }
+    
+   static public Dictionary<string, string> Saves= new Dictionary<string, string>();
+}
