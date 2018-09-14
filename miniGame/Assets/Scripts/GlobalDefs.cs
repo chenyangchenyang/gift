@@ -5,8 +5,7 @@ using UnityEngine;
 public class GlobalDefs : MonoBehaviour {
 
     public float PuckTimeLength = 2;
-    private float puckTime = 0;
-    public float maxPuckTime = 2;
+    public float puckTime = 0;
 	// Use this for initialization
 	void Start () {
         GlobalTool.Init();
@@ -15,7 +14,7 @@ public class GlobalDefs : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         puckTime += Time.deltaTime;
-        if (GlobalTool.puckState == 1 && puckTime >= maxPuckTime)
+        if (GlobalTool.puckState == 1 && puckTime >= 2)
         {
             GotoPuckBall();
         }
@@ -80,14 +79,7 @@ public partial class GlobalTool
         Show(puckBall);
         puckBall.transform.position = player.transform.position;
         PlayerControl playerControl = player.GetComponent<PlayerControl>();
-        if (player.transform.GetChild(0).localScale.x > 0)
-        {
-            puckBall.GetComponent<PlayerControl>().dir = new Vector2(1, 0);
-        }
-        else
-        {
-            puckBall.GetComponent<PlayerControl>().dir = new Vector2(-1, 0);
-        }
+        puckBall.GetComponent<PlayerControl>().dir = playerControl.lastDir;
         puckBall.GetComponent<PlayerControl>().move = true;
         puckBall.transform.GetChild(0).localScale = player.transform.GetChild(0).localScale;
         //controlButton.SetActive(false);

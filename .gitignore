@@ -48,3 +48,14 @@ miniGame/ProjectSettings/TagManager.asset
 miniGame/ProjectSettings/EditorBuildSettings.asset
 miniGame/Assets/Scenes/level3.unity
 miniGame/Assets/Scenes/level3.unity
+miniGame/Assets/Scenes/Level1.unity
+miniGame/Assets/Scenes/Level2-outside.unity
+miniGame/Assets/Scenes/Level2Scene5.unity
+miniGame/Assets/Scenes/Level4.unity
+miniGame/Assets/Scripts/GameManager.cs
+miniGame/Assets/Scripts/GlobalDefs.cs
+miniGame/Assets/Scripts/Level2/KnifeControl.cs
+miniGame/Assets/Scripts/Level2/ParentControl.cs
+miniGame/Assets/Scripts/Level2/Scene22AlphaControl.cs
+miniGame/Assets/Scripts/Level4/HuiyiControl.cs
+miniGame/ProjectSettings/ProjectSettings.asset
