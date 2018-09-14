@@ -65,6 +65,7 @@ public class KnifeControl : WrappedBehaviour {
                 {
                     // 切换到下一个场景
                     Invoke("Blackout", 2);
+                    Invoke("Next2", 4);
                 }
             }
         }
@@ -84,6 +85,8 @@ public class KnifeControl : WrappedBehaviour {
 
     void Next2()
     {
+        GlobalTool.reenter = true;
+        GlobalTool.reenterNotHandled = true;
         SceneManager.LoadScene("Level2Inside");
     }
 
