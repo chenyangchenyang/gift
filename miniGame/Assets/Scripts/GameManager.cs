@@ -37,7 +37,7 @@ public partial class GameManager : MonoBehaviour
 
     public AudioClip []FootStepAudios;
 
-    public AudioClip BgAudioClip;
+    public GameObject BackGroundAudio;
 
     private Vector3 LeftPoint;
 
@@ -80,12 +80,9 @@ public partial class GameManager : MonoBehaviour
         PuckSkillAudioSource = GetComponent<AudioSource>();
         PuckSkillAudioSource.Stop();
 
-        FootAudioSource = Player.GetComponent<AudioSource>();      
+        FootAudioSource = Player.GetComponent<AudioSource>();
 
-        BgAudioSource = CaremaObject.GetComponent<AudioSource>();
-        BgAudioSource.clip = BgAudioClip;
-        BgAudioSource.time = GlobalTool.BgAudioTime;
-        BgAudioSource.Play();
+        BgAudioSource= BackGroundAudio.GetComponent<AudioSource>();      
     }
 
     private void InitializedPosition()
@@ -170,6 +167,8 @@ public partial class GameManager : MonoBehaviour
     {
         GlobalTool.BgAudioTime = BgAudioSource.time;
 
+        GlobalTool.BgClipName = BgAudioSource.clip.name;
+
         string name = SceneManager.GetActiveScene().name;
 
         SceneManager.LoadScene(name);
@@ -238,51 +237,83 @@ public partial class GameManager : MonoBehaviour
         FootAudioSource.Play();
     }
 
-    public void SubAudioInTime(AudioSource audioSource, float time)
+    public void AdjustAudioInTime(AudioSource audioSource, float time, bool IsDown)
     {
-        SetSubAudio(audioSource, time);
-        StartSubAudio();
+        SetAdjustAudio(audioSource, time, IsDown);
+
+        StartAdjustAudio();
+    }
+
+    public void ReStartAudio(AudioSource BgAudioSource, string path)
+    {
+        if (GlobalTool.BgClipName == null || GlobalTool.BgClipName.Equals(""))
+        {
+            return;
+        }
+
+        BgAudioSource.time = GlobalTool.BgAudioTime;
+
+        string clipName = path + GlobalTool.BgClipName;
+
+        print("clipName:" + clipName);
+
+        AudioClip clip = Resources.Load<AudioClip>(clipName);
+
+        print("clipName clip:" + clipName);
+
+        BgAudioSource.clip = clip;
+
+        BgAudioSource.Play();
     }
 }
 
 public partial class GlobalTool
 {
     static public float BgAudioTime = 0.0f;
+    static public string BgClipName;
 }
 
 public partial class GameManager
 {
     private AudioSource MySubAudioSource;
-    private float SubAudioDelteTime;
-    private int SubAudioVolumDownCount;
-    private float SubAudioEachDownTime;
-    private float SubAudioEachDownValue;
+    private float AudioDelteTime;
+    private int AudioVolumAdjustCount;
+    private float AudioEachAdjustTime;
+    private float AudioEachAdjustValue;
 
-    public void SetSubAudio(AudioSource audioSource, float time)
+    private void SetAdjustAudio(AudioSource audioSource, float time, bool IsDown)
     {
-        MySubAudioSource = audioSource;
-        SubAudioDelteTime     = time;
+        MySubAudioSource    = audioSource;
+        AudioDelteTime   = time;
 
-        SubAudioVolumDownCount= 20;
+        AudioVolumAdjustCount= 20;
 
-        SubAudioEachDownTime = time / SubAudioVolumDownCount;
-        SubAudioEachDownValue = MySubAudioSource.volume / SubAudioVolumDownCount;        
+        AudioEachAdjustTime = time / AudioVolumAdjustCount;
+        
+        if(IsDown)
+        {
+            AudioEachAdjustValue = -MySubAudioSource.volume / AudioVolumAdjustCount;
+        }
+        else
+        {
+            AudioEachAdjustValue = (1- MySubAudioSource.volume) / AudioVolumAdjustCount;
+        }
     }
 
-    public void StartSubAudio()
+    private void StartAdjustAudio()
     {
-        StartCoroutine(RunSubBgAudio());
+        StartCoroutine(RunAdjustBgAudio());
     }
 
-    IEnumerator RunSubBgAudio()
+    IEnumerator RunAdjustBgAudio()
     {
-        while (MySubAudioSource.volume > 0)
+        while (MySubAudioSource.volume > 0 && MySubAudioSource.volume< 1.0f)
         {
             print("MyAudioSource.volume:" + MySubAudioSource.volume);
 
-            MySubAudioSource.volume -= SubAudioEachDownValue;
+            MySubAudioSource.volume += AudioEachAdjustValue;
 
-            yield return new WaitForSeconds(SubAudioEachDownTime);
+            yield return new WaitForSeconds(AudioEachAdjustTime);
         }
     }
 }

@@ -33,11 +33,13 @@ public class ProtectedThing : MonoBehaviour
 
 		if(transform.position.x>= MaxRight)
 		{
+            transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
 			ToWardRight = false;
 		}
 		else if(transform.position.x<= MaxLeft)
 		{
-			ToWardRight = true;
+            transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
+            ToWardRight = true;
 		}
 	}
 }

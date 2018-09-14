@@ -22,26 +22,6 @@ public class SwitchLevelAnimation : MonoBehaviour
 
     public void SubBgAudio()
     {
-        GameManager._instance.SubAudioInTime(GameManager._instance.BgAudioSource, GameManager._instance.BgAudioVolumToZeroDeleta);
-        //float v     = GameManager._instance.BgAudioSource.volume;
-        //float time  = GameManager._instance.BgAudioVolumToZeroDeleta;
-
-        //VTime = time / VolumDownCount;
-        //VolumDownV = v / VolumDownCount;
-
-        //StartCoroutine(RunSubBgAudio());
+        GameManager._instance.AdjustAudioInTime(GameManager._instance.BgAudioSource, GameManager._instance.BgAudioVolumToZeroDeleta, true);      
     }
-
-    //IEnumerator RunSubBgAudio()
-    //{      
-
-    //    while (GameManager._instance.BgAudioSource.volume > 0)
-    //    {
-    //        print(" RunSubBgAudio :" + GameManager._instance.BgAudioSource.volume);
-
-    //        GameManager._instance.BgAudioSource.volume -= VolumDownV;
-
-    //        yield return new WaitForSeconds(VTime);
-    //    }
-    //}
 }
