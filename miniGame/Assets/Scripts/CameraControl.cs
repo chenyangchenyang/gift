@@ -28,6 +28,7 @@ public class CameraControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+        if (lookGameObject == null) return;
         float x= lookGameObject.transform.position.x;
 
         if (x <= GameManager._instance.GetLeftCameraBorder() ||

@@ -8,6 +8,7 @@ TagManager:
   - switch
   - OldMan
   - Foreground2_1
+  - SwitchLevelAnimation
   layers:
   - Default
   - TransparentFX

@@ -38,3 +38,10 @@ miniGame/Assets/Scripts/LightSwitchControl.cs
 miniGame/Assets/Scripts/LightSwitchControl.cs
 miniGame/Assets/Scripts/GameManager.cs
 miniGame/Assets/Scenes/Level1.unity
+miniGame/Assets/Scenes/第二关.unity
+miniGame/Assets/Scripts/CameraControl.cs
+miniGame/Assets/Scripts/GlobalDefs.cs
+miniGame/Assets/Scripts/Level2/ParentControl.cs
+miniGame/ProjectSettings/EditorBuildSettings.asset
+miniGame/ProjectSettings/GraphicsSettings.asset
+miniGame/ProjectSettings/TagManager.asset

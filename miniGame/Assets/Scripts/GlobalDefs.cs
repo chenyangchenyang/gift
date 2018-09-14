@@ -66,7 +66,7 @@ public partial class GlobalTool
         player = GameManager._instance.Player;
 
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("playerBody"), LayerMask.NameToLayer("puck"), true);
-        joyStickControl = GameObject.Find("GlobalController").GetComponent<JoyStickControl>();
+        joyStickControl = GameObject.Find("GlobalHandler").GetComponent<JoyStickControl>();
         controlButton = GameManager._instance.PuckButton;
 
         //controlButton = GameObject.Find("Button");
