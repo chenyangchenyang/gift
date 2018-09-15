@@ -47,8 +47,10 @@ public class PostBox : MonoBehaviour {
 
     private void PausePlayerMove()
     {
-        PlayerControl pcl= GameManager._instance.Player.GetComponent<PlayerControl>();       
+        PlayerControl pcl = GameManager._instance.Player.GetComponent<PlayerControl>();
 
         pcl.PauseMove();
+
+        GameManager._instance.ReleaseControl();
     }
 }

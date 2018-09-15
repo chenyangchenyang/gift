@@ -22,31 +22,59 @@ public class GlobalDefs : MonoBehaviour {
 
     public void Puck()
     {
+        if(null == GlobalTool.puckBall)
+        {
+            print("null == GlobalTool.puckBall");
+
+            return;
+        }
+
         if (GlobalTool.puckState == 0)
-        {   
-            GlobalTool.puckState = 1;
+        {
             GlobalTool.ReleasePuckBall();
+
+            SetPuckState(1);            
+
             puckTime = 0;
             // Update() 2秒后会自动调用 GotoPuckBall()
+           
         }
         else
         {
             GotoPuckBall();
         }
 
-        ChangeCameraLookAt();
+        
     }
 
     public void GotoPuckBall()
     {
-        if (GlobalTool.puckState == 0) return;
+        if (GlobalTool.puckState == 0)
+            return;
         GlobalTool.GotoPuckBall();
-        GlobalTool.puckState = 0;
+
+        SetPuckState(0);
     }
 
     private void ChangeCameraLookAt()
     {
         GameManager._instance.ChangeCameraLookAt(GlobalTool.puckState);
+    }
+
+    public void ReleaseControlPuck()
+    {
+        GlobalTool.puckBall = null;
+    }
+
+    public void GetControlPuck()
+    {
+        GlobalTool.puckBall = GameManager._instance.PuckBall;
+    }
+
+    public void SetPuckState(int state)
+    {
+        GlobalTool.puckState = state;
+        ChangeCameraLookAt();
     }
 }
 

@@ -13,7 +13,8 @@ public class ReLiftCollider : MonoBehaviour
         if(rootGo== GameManager._instance.Player || rootGo== GameManager._instance.PuckBall)
         {
             GlobalTool.SetString(GameManager._instance.PlayerPosition, GameManager._instance.Vector3ToString(rootGo.transform.position));
-
+            GlobalTool.SetString(GameManager._instance.CameraPosition, GameManager._instance.Vector3ToString(
+                GameManager._instance.CaremaObject.transform.position));
             print("ReLiftCollider OnTriggerEnter2D");
         }
     }

@@ -12,8 +12,7 @@ public class JoyStickControl : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        player = GameManager._instance.Player;
-        body = player.transform.GetChild(0).gameObject;
+        GetControlPlayer();
     }
 	
 	// Update is called once per frame
@@ -23,6 +22,11 @@ public class JoyStickControl : MonoBehaviour {
 
     public void OnMove(Vector2 dir)
     {
+        if(null == player)
+        {
+            return;
+        }
+
         if ((dir.x > 0) != ToRight)
         {
             var scale = body.transform.localScale;
@@ -38,8 +42,25 @@ public class JoyStickControl : MonoBehaviour {
 
     public void OnMoveEnd()
     {
+        if(null ==player)
+        {
+            return;
+        }
+
         player.GetComponent<PlayerControl>().dir = Vector2.zero;
         player.GetComponent<PlayerControl>().move = false;
         player.GetComponent<Animator>().SetBool("Walking", false);
+    }
+
+    public void ReleaseControlPlayer()
+    {
+        player = null;
+        body = null;
+    }
+
+    public void GetControlPlayer()
+    {
+        player = GameManager._instance.Player;
+        body = player.transform.GetChild(0).gameObject;
     }
 }

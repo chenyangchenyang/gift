@@ -28,6 +28,7 @@ public class PressToActiveGameObjects : MonoBehaviour
         if("ChildPaint" == gameObject.name)
         {
             GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
+            GameManager._instance.GetControl();
         }
     }
 }

@@ -16,13 +16,7 @@ public class CameraControl : MonoBehaviour {
 
         startPosition = transform.position;
 
-        //offset = transform.position - GameObject.FindGameObjectWithTag("OldMan").transform.position;
         offset = transform.position - lookGameObject.transform.position;
-
-        if(!GlobalTool.Saves.ContainsKey(GameManager._instance.CameraDistancePlayer))
-        {
-            GlobalTool.SetString(GameManager._instance.CameraDistancePlayer, GameManager._instance.Vector3ToString(offset));
-        }
     }
 	
 	// Update is called once per frame
