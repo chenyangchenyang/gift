@@ -23,7 +23,6 @@ public class ButtonControl : WrappedBehaviour {
 	void Start () {
         btStart = GameObject.Find("START");
         btContinue = GameObject.Find("CONTINUE");
-        GameManager._instance.PlayerControlUI.SetActive(false);
         for (int i = 0; i < 4; ++i)
         {
             leaves[i] = GameObject.Find("leaf" + (i + 1));
@@ -34,7 +33,9 @@ public class ButtonControl : WrappedBehaviour {
             GlobalTool.Hide(chapters[i]);
         }
         buttonAudio = GameObject.Find("ButtonAudio").GetComponent<AudioSource>();
-	}
+        GameManager._instance.Player.GetComponent<PlayerControl>().PauseMove();
+        GameManager._instance.ReleaseControl();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -102,7 +103,9 @@ public class ButtonControl : WrappedBehaviour {
                 var cameraControl = Camera.main.GetComponent<CameraControl>();
                 cameraControl.needMove = true;
                 cameraControl.destination = new Vector3(-23.3f, -1.5f, -50);
-                GameManager._instance.PlayerControlUI.SetActive(true);
+                GameManager._instance.GetControl();
+                GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
+                GameManager._instance.GlobalControllerObject.GetComponent<GlobalControl>().StartS1Bgm();
                 return;
             default:
                 Invoke("Blackout", 0);
