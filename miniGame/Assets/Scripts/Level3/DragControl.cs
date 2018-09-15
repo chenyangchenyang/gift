@@ -71,5 +71,6 @@ public class DragControl : WrappedBehaviour {
     {
         letter.transform.position = new Vector3(1000, 10000, 0);
         joystick.SetActive(true);
+        GameObject.Find("GlobalHandler").GetComponent<JoyStickControl>().OnMoveEnd();
     }
 }

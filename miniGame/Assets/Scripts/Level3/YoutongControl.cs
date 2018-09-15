@@ -20,6 +20,7 @@ public class YoutongControl : WrappedBehaviour {
         pen = GameObject.Find("pen");
         content = GameObject.Find("content");
         joystick = GameObject.Find("New Joystick");
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("UI"), LayerMask.NameToLayer("playerBody"));
 	}
 	
 	// Update is called once per frame
@@ -32,6 +33,7 @@ public class YoutongControl : WrappedBehaviour {
                 Invoke("Blackout", 0);
                 Invoke("ShowLetter", 2);
                 joystick.SetActive(false);
+                GameObject.Find("GlobalHandler").GetComponent<JoyStickControl>().OnMoveEnd();
             }
         }
 	}
