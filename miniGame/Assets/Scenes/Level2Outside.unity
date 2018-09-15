@@ -314,7 +314,8 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   lastPosition: {x: 0, y: 0}
   lastDir: {x: 0, y: 0}
-  speed: 1.55
+  addSpeed: 0
+  startSpeed: 2.3
 --- !u!95 &110411885
 Animator:
   serializedVersion: 3
@@ -824,7 +825,7 @@ Prefab:
     - target: {fileID: 114569835811029574, guid: a22ff9d803192404aa60bb57aee8da3d,
         type: 2}
       propertyPath: RightCameraBorderDistanceEndPointX
-      value: 6
+      value: 9.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a22ff9d803192404aa60bb57aee8da3d, type: 2}
@@ -1555,7 +1556,8 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   lastPosition: {x: 0, y: 0}
   lastDir: {x: 0, y: 0}
-  speed: 1.55
+  addSpeed: -8
+  startSpeed: 10
 --- !u!50 &682442892
 Rigidbody2D:
   serializedVersion: 4
