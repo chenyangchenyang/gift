@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class ButtonControl : MonoBehaviour {
+public class ButtonControl : WrappedBehaviour {
 
     /*
      * 0 - 开始
@@ -27,6 +27,10 @@ public class ButtonControl : MonoBehaviour {
         {
             leaves[i] = GameObject.Find("leaf" + (i + 1));
             chapters[i] = GameObject.Find("chapter" + (i + 1));
+        }
+        for (int i = 0; i < 4; ++i)
+        {
+            GlobalTool.Hide(chapters[i]);
         }
 	}
 	
@@ -64,6 +68,7 @@ public class ButtonControl : MonoBehaviour {
             {
                 for (int i = 0; i < 4; ++i)
                 {
+                    GlobalTool.Show(chapters[i]);
                     chapters[i].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
                 }
             }
@@ -79,6 +84,7 @@ public class ButtonControl : MonoBehaviour {
                     chapters[i - 11].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
                 }
             }
+            Invoke("ChangeScene", 1);
         }
     }
 
@@ -94,10 +100,26 @@ public class ButtonControl : MonoBehaviour {
                 cameraControl.destination = tmpPos;
                 GameManager._instance.PlayerControlUI.SetActive(true);
                 return;
+            default:
+                Invoke("Blackout", 0);
+                Invoke("ExternalScene", 2);
+                return;
+        }
+    }
+
+    void ExternalScene()
+    {
+        switch (nextId)
+        {
             case 2:
                 SceneManager.LoadScene("Level2Outside");
                 return;
-                
+            case 3:
+                SceneManager.LoadScene("Level3");
+                return;
+            case 4:
+                SceneManager.LoadScene("Level4");
+                return;
         }
     }
 }
