@@ -8,7 +8,7 @@ public class YoutongControl : WrappedBehaviour {
     private GameObject player;
     private GameObject[] bg = new GameObject[3];
     private GameObject letter, pen, content, yeye;
-    private GameObject joystick;
+    private GameObject joystick, smallBubble, bigBubble;
 
 	// Use this for initialization
 	void Start () {
@@ -21,31 +21,24 @@ public class YoutongControl : WrappedBehaviour {
         content = GameObject.Find("content");
         joystick = GameObject.Find("New Joystick");
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("UI"), LayerMask.NameToLayer("playerBody"));
+        smallBubble = GameObject.Find("BigBubble");
+        bigBubble = GameObject.Find("smallBubble");
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (!handled)
         {
-            if (Mathf.Abs(player.transform.position.x - transform.position.x) < 0.8)
+            if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2)
             {
                 handled = true;
-                Invoke("Blackout", 0);
-                Invoke("ShowLetter", 2);
-                joystick.SetActive(false);
-                GameObject.Find("GlobalHandler").GetComponent<JoyStickControl>().OnMoveEnd();
+                smallBubble.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
+                bigBubble.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
+                GameManager._instance.Player.GetComponent<PlayerControl>().PauseMove();
+                GameManager._instance.ReleaseControl();
             }
         }
 	}
 
-    void ShowLetter()
-    {
-        letter.transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
-        for (int i = 0; i < 3; ++i)
-        {
-            bg[i].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
-        }
-        pen.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
-        pen.GetComponent<DragControl>().originPos = pen.transform.position;
-    }
+
 }

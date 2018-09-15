@@ -13,7 +13,16 @@ public class CatCollider : MonoBehaviour
 
         if(rootGo== GameManager._instance.Player)
         {
-            GameManager._instance.ReStart();
+            print("CatCollider rootGo");
+
+            GetComponent<AudioSource>().Play();
+
+            Invoke("Process", 0.5f);            
         }
+    }
+
+    private void Process()
+    {
+        GameManager._instance.ReStart();
     }
 }

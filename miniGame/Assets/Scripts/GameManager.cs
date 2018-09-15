@@ -335,14 +335,14 @@ public partial class GameManager
 
     IEnumerator RunAdjustBgAudio()
     {
-        if(MySubAudioSource.volume> 0)
+        if(MySubAudioSource.volume> 0.001f)
         {
-            MySubAudioSource.volume -= 0.0001f;
+            MySubAudioSource.volume -= 0.001f;
         }
         
         while (MySubAudioSource.volume > 0 && MySubAudioSource.volume< 1.0f)
         {
-            print("MyAudioSource.volume:" + MySubAudioSource.volume);
+            print(" RunAdjustBgAudio :" + MySubAudioSource.volume);
 
             MySubAudioSource.volume += AudioEachAdjustValue;
 

@@ -37,6 +37,8 @@ public class ClickControl : WrappedBehaviour {
                 soul[state + 1].transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
                 soul[state + 1].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
                 ++state;
+
+                
             }
             if (state == 3)
             {
@@ -45,7 +47,22 @@ public class ClickControl : WrappedBehaviour {
                     Invoke("ShowSoul", (i - 3) * 3);
                 }
                 transform.position = new Vector3(1000, 1000, 0);
+
+
+                GameManager._instance.BackGroundAudio.GetComponent<Level4BackGroundAudio>().ChangeHuiYi3();
             }
+
+            if (2 == state)
+            {
+                GameManager._instance.BackGroundAudio.GetComponent<Level4BackGroundAudio>().ChangeHuiYi2();
+            }
+
+            //if(4 == state)
+            //{
+            //    GameManager._instance.BackGroundAudio.GetComponent<Level4BackGroundAudio>().ChangeHuiYi3();
+            //}
+
+            print("OnMouseUpAsButton :"+ state);
         }
     }
 
@@ -59,6 +76,9 @@ public class ClickControl : WrappedBehaviour {
                 soul[i].transform.position = new Vector3(-10000, -10000, 0);
             }
             Camera.main.GetComponent<CameraControl>().lookGameObject = player;
+
+            GameManager._instance.BackGroundAudio.GetComponent<Level4BackGroundAudio>().ChangeHuiYiHouing();
+
             Invoke("Whiteout", 2);
         } 
         else
