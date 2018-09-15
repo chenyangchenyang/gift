@@ -38,6 +38,13 @@ public class ClickControl : WrappedBehaviour {
                 soul[state + 1].transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
                 soul[state + 1].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
                 ++state;
+
+
+                if(1 == state)
+                {
+                    GameManager._instance.BackGroundAudio.GetComponent<Level4BackGroundAudio>().ChangeHuiYi2();
+                }
+
             }
             if (state == 3)
             {

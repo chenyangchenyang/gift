@@ -29,6 +29,10 @@ public class HuiyiControl : WrappedBehaviour
         {
             if (Mathf.Abs(Camera.main.transform.position.x - huiyiFlag.transform.position.x) < 0.1)
             {
+
+                GameManager._instance.BackGroundAudio.GetComponent<Level4BackGroundAudio>().ChangeHuiYi1();
+
+
                 showed = true;
                 Invoke("Blackout", 0);
                 soul[0].transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);

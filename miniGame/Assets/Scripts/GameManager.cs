@@ -133,7 +133,7 @@ public partial class GameManager : MonoBehaviour
     {
         GlobalTool.DeleteAll();
 
-        GlobalTool.BgAudioTime = 0.0f;
+        GlobalTool.ChangeScene();
 
         int nextActiveScene = SceneManager.GetActiveScene().buildIndex+ 1;
 
@@ -163,7 +163,7 @@ public partial class GameManager : MonoBehaviour
 
     public void ReStart()
     {       
-        Invoke("ReStartScene", 5.0f);
+        Invoke("ReStartScene", 1.03f);
     }
 
     private void ReStartScene()
@@ -200,12 +200,11 @@ public partial class GameManager : MonoBehaviour
 
         if (collisionGameObject == Player || collisionGameObject == PuckBall)
         {
+            print("onEnter collisionGameObject :"+ collisionGameObject.name);
+
             PlayerDeathAnimation.transform.position = collisionGameObject.transform.position;
 
             collisionGameObject.transform.Translate(0, 10000.0f, 0);
-            collisionGameObject.transform.position = new Vector3(collisionGameObject.transform.position.x, collisionGameObject.transform.position.y + 10000.0f,
-                collisionGameObject.transform.position.z);
-            //collisionGameObject.SetActive(false);
 
             PlayerDeathAnimation.SetActive(true);
 
@@ -269,11 +268,7 @@ public partial class GameManager : MonoBehaviour
 
         string clipName = path + GlobalTool.BgClipName;
 
-        print("clipName:" + clipName);
-
         AudioClip clip = Resources.Load<AudioClip>(clipName);
-
-        print("clipName clip:" + clipName);
 
         BgAudioSource.clip = clip;
 
@@ -285,6 +280,12 @@ public partial class GlobalTool
 {
     static public float BgAudioTime = 0.0f;
     static public string BgClipName;
+
+    static public void ChangeScene()
+    {
+        BgAudioTime = 0.0f;
+        BgClipName = "";
+    }
 }
 
 public partial class GameManager
@@ -321,6 +322,11 @@ public partial class GameManager
 
     IEnumerator RunAdjustBgAudio()
     {
+        if(MySubAudioSource.volume> 0)
+        {
+            MySubAudioSource.volume -= 0.0001f;
+        }
+        
         while (MySubAudioSource.volume > 0 && MySubAudioSource.volume< 1.0f)
         {
             print("MyAudioSource.volume:" + MySubAudioSource.volume);
