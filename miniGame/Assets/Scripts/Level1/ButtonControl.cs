@@ -95,14 +95,13 @@ public class ButtonControl : WrappedBehaviour {
     void ChangeScene()
     {
         GlobalTool.needUi = false;
+        GlobalTool.scene1StartHandled = true;
         switch (nextId)
         {
             case 1:
                 var cameraControl = Camera.main.GetComponent<CameraControl>();
                 cameraControl.needMove = true;
-                var tmpPos = cameraControl.transform.position;
-                tmpPos.y -= 15.8f;
-                cameraControl.destination = tmpPos;
+                cameraControl.destination = new Vector3(-23.3f, -1.5f, -50);
                 GameManager._instance.PlayerControlUI.SetActive(true);
                 return;
             default:
