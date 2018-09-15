@@ -63,12 +63,13 @@ public partial class GameManager : MonoBehaviour
     private void Start()
     {        
         Initialized();
+        Camera.main.GetComponent<CameraControl>().lookGameObject = GameObject.Find("Player");
     }
 
     private void Initialized()
     {
         InitializedLight();
-
+         
         InitializedPosition();
 
         PuckBall.transform.position = Player.transform.position - new Vector3(2, 0, 0);

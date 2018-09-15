@@ -10,6 +10,7 @@ public class ParentControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Camera.main.GetComponent<CameraControl>().lookGameObject = GameObject.Find("Player");
 	}
 	
 	// Update is called once per frame
@@ -22,7 +23,6 @@ public class ParentControl : MonoBehaviour {
 
         if (Mathf.Abs(transform.position.x - GameObject.Find("Player").transform.position.x) >= 17)
         {
-            print("呵呵呵");
             GlobalTool.woodJump = true;
             GlobalTool.Blackout();
             Invoke("ChangeScene", 3);
