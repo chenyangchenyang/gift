@@ -136,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 4011347}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.66, y: -8.8025055, z: 0}
+  m_LocalPosition: {x: -33.63, y: -8.8025055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 789794196}
@@ -314,9 +314,8 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   lastPosition: {x: 0, y: 0}
   lastDir: {x: 0, y: 0}
-  startSpeed: 0
-  speed: 2
   addSpeed: 0
+  startSpeed: 2.3
 --- !u!95 &110411885
 Animator:
   serializedVersion: 3
@@ -1805,9 +1804,8 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   lastPosition: {x: 0, y: 0}
   lastDir: {x: 0, y: 0}
-  startSpeed: 0
-  speed: 7.53
-  addSpeed: -10
+  addSpeed: -8
+  startSpeed: 10
 --- !u!50 &682442892
 Rigidbody2D:
   serializedVersion: 4
@@ -1991,7 +1989,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 728064410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.89, y: -9.08, z: 0}
+  m_LocalPosition: {x: -22.96, y: -9.08, z: 0}
   m_LocalScale: {x: 0.32189134, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3464,7 +3462,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1585616959}
   m_LocalRotation: {x: -0.003275526, y: -0, z: -0, w: 0.99999464}
-  m_LocalPosition: {x: -40.43, y: -9.19, z: 0.07}
+  m_LocalPosition: {x: -40.39, y: -9.12, z: 0.07}
   m_LocalScale: {x: 0.3125008, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
