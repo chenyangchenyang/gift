@@ -52,7 +52,7 @@ public partial class GameManager : MonoBehaviour
     [HideInInspector]
     public string PlayerPosition = "PlayerPosition";
     [HideInInspector]
-    public string CameraDistancePlayer = "CameraDistancePlayer";
+    public string CameraPosition = "CameraPosition";
 
 
     private void Awake()
@@ -96,12 +96,12 @@ public partial class GameManager : MonoBehaviour
             return;
         }        
         string playerPositionStr  = GlobalTool.GetString(PlayerPosition);
-        string cameraDistanceStr  = GlobalTool.GetString(CameraDistancePlayer);
+        string cameraPositionStr = GlobalTool.GetString(CameraPosition);
 
         print("playerPositionStr :"+ playerPositionStr);
 
         Player.transform.position = String2Vector3(playerPositionStr);
-        CaremaObject.transform.position = Player.transform.position + String2Vector3(cameraDistanceStr);
+        CaremaObject.transform.position = String2Vector3(cameraPositionStr);
     }
 
     void Update()
@@ -274,6 +274,18 @@ public partial class GameManager : MonoBehaviour
         BgAudioSource.clip = clip;
 
         BgAudioSource.Play();
+    }
+
+    public void ReleaseControl()
+    {
+        GlobalControllerObject.GetComponent<JoyStickControl>().ReleaseControlPlayer();
+        GlobalControllerObject.GetComponent<GlobalDefs>().ReleaseControlPuck();
+    }
+
+    public void GetControl()
+    {
+        GlobalControllerObject.GetComponent<JoyStickControl>().GetControlPlayer();
+        GlobalControllerObject.GetComponent<GlobalDefs>().GetControlPuck();
     }
 }
 
