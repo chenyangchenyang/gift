@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Scene22AlphaControl : MonoBehaviour {
 
-    float speed = 2.5f;
+    public float speed = 2.5f;
     public bool visible = true;
+    private bool changing = false;
     private SpriteRenderer renderer;
     
 
@@ -43,5 +44,10 @@ public class Scene22AlphaControl : MonoBehaviour {
         Color color = renderer.color;
         color.a = visible ? 1 : 0;
         renderer.color = color;
+    }
+
+    public void ChangeSprite(string spriteName)
+    {
+        ChangeVisible(false);
     }
 }
