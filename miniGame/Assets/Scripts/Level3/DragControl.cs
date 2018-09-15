@@ -12,6 +12,7 @@ public class DragControl : WrappedBehaviour {
     private GameObject[] bg = new GameObject[3];
     private GameObject letter, pen, content, yeye;
     private GameObject joystick;
+    private GameObject smallBubble, bigBubble;
     // Use this for initialization
     void Start () {
         player = GameObject.Find("Player");
@@ -23,6 +24,8 @@ public class DragControl : WrappedBehaviour {
         yeye = GameObject.Find("yeye");
         content = GameObject.Find("content");
         joystick = GameObject.Find("New Joystick");
+        smallBubble = GameObject.Find("BigBubble");
+        bigBubble = GameObject.Find("smallBubble");
     }
 	
 	// Update is called once per frame
@@ -70,7 +73,9 @@ public class DragControl : WrappedBehaviour {
     private void RemoveLetter()
     {
         letter.transform.position = new Vector3(1000, 10000, 0);
-        joystick.SetActive(true);
-        GameObject.Find("GlobalHandler").GetComponent<JoyStickControl>().OnMoveEnd();
+        GameManager._instance.GetControl();
+        GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
+        smallBubble.GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+        bigBubble.GetComponent<Scene22AlphaControl>().ChangeVisible(false);
     }
 }
