@@ -54,6 +54,7 @@ public class ButtonControl : WrappedBehaviour {
         if (type == 0)
         {
             nextId = 1;
+            Invoke("ChangeScene", 1);
         }
         if (type > 10)
         {
@@ -90,6 +91,7 @@ public class ButtonControl : WrappedBehaviour {
 
     void ChangeScene()
     {
+        GlobalTool.needUi = false;
         switch (nextId)
         {
             case 1:
@@ -122,4 +124,10 @@ public class ButtonControl : WrappedBehaviour {
                 return;
         }
     }
+}
+
+public partial class GlobalTool
+{
+    public static bool scene1StartHandled = false;
+    public static bool needUi = true;
 }
