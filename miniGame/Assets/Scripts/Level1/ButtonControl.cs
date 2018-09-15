@@ -12,8 +12,9 @@ public class ButtonControl : WrappedBehaviour {
      * 13 - 第三章
      * 14 - 第四章
      */ 
-    public int type; 
-    
+    public int type;
+
+    private AudioSource buttonAudio;
     private GameObject btStart, btContinue;
     private GameObject[] leaves = new GameObject[4];
     private GameObject[] chapters = new GameObject[4];
@@ -32,6 +33,7 @@ public class ButtonControl : WrappedBehaviour {
         {
             GlobalTool.Hide(chapters[i]);
         }
+        buttonAudio = GameObject.Find("ButtonAudio").GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -42,6 +44,7 @@ public class ButtonControl : WrappedBehaviour {
     private void OnMouseDown()
     {
         transform.localScale = new Vector3(1.1f, 1.1f, 1);
+        buttonAudio.Play();
     }
 
     private void OnMouseUp()
