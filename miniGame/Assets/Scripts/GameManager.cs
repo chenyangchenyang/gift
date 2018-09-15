@@ -163,7 +163,9 @@ public partial class GameManager : MonoBehaviour
     }
 
     public void ReStart()
-    {       
+    {
+        GlobalTool.scene1StartHandled = false;
+        print("scene1StartHandled false");
         Invoke("ReStartScene", 1.03f);
     }
 
