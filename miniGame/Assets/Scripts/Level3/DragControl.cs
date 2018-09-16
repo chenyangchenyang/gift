@@ -47,8 +47,8 @@ public class DragControl : WrappedBehaviour {
         {
             content.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
             yeye.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
-            Invoke("FinishLetter", 4);
-            Invoke("Whiteout", 5);
+            Invoke("FinishLetter", 6);
+            Invoke("Whiteout", 7);
         }
         lastPos = transform.position;
     }
