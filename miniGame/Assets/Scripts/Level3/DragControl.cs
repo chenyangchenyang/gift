@@ -10,7 +10,7 @@ public class DragControl : WrappedBehaviour {
     private Vector3 lastPos;
     private GameObject player;
     private GameObject[] bg = new GameObject[3];
-    private GameObject letter, pen, content, yeye;
+    private GameObject letter, pen, content, yeye, oldmanSending;
     private GameObject joystick;
     private GameObject smallBubble, bigBubble;
     // Use this for initialization
@@ -26,6 +26,7 @@ public class DragControl : WrappedBehaviour {
         joystick = GameObject.Find("New Joystick");
         smallBubble = GameObject.Find("BigBubble");
         bigBubble = GameObject.Find("smallBubble");
+        oldmanSending = GameObject.Find("oldmanSending");
     }
 	
 	// Update is called once per frame
@@ -48,7 +49,6 @@ public class DragControl : WrappedBehaviour {
             content.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
             yeye.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
             Invoke("FinishLetter", 6);
-            Invoke("Whiteout", 7);
         }
         lastPos = transform.position;
     }
@@ -56,6 +56,24 @@ public class DragControl : WrappedBehaviour {
     private void OnMouseUp()
     {
         transform.position = originPos;
+    }
+
+    private void ShowSending()
+    {
+        oldmanSending.transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
+        Invoke("HideSending", 3);
+    }
+
+    private void HideSending()
+    {
+        oldmanSending.GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+        Invoke("RemoveSending", 1.5f);
+    }
+
+    private void RemoveSending()
+    {
+        oldmanSending.transform.position = new Vector3(-1000, -1000, 0);
+        Invoke("Whiteout", 0);
     }
 
     private void FinishLetter()
@@ -68,6 +86,7 @@ public class DragControl : WrappedBehaviour {
         yeye.GetComponent<Scene22AlphaControl>().ChangeVisible(false);
         content.GetComponent<Scene22AlphaControl>().ChangeVisible(false);
         Invoke("RemoveLetter", 1.5f);
+        Invoke("ShowSending", 0);
     }
 
     private void RemoveLetter()
