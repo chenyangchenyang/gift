@@ -477,12 +477,12 @@ Prefab:
     - target: {fileID: 224155339364060558, guid: bb94f1a370d591a459b33bdfe67bdf6c,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 659.1
+      value: 659.2
       objectReference: {fileID: 0}
     - target: {fileID: 224155339364060558, guid: bb94f1a370d591a459b33bdfe67bdf6c,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -257.4
+      value: -315.97974
       objectReference: {fileID: 0}
     - target: {fileID: 1430652639096672, guid: bb94f1a370d591a459b33bdfe67bdf6c, type: 2}
       propertyPath: m_IsActive
@@ -2987,6 +2987,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookGameObject: {fileID: 110411881}
+  needMove: 0
+  destination: {x: 0, y: 0, z: 0}
+  speed: 10
 --- !u!81 &1297090006
 AudioListener:
   m_ObjectHideFlags: 0
