@@ -29,7 +29,7 @@ public class CameraControl : MonoBehaviour {
             var dir = (destination - transform.position).normalized;
             var pos = transform.position + dir * speed * Time.deltaTime;
             transform.position = pos;
-            if (Vector3.Distance(destination, transform.position) < 0.1)
+            if (Vector3.Distance(destination, transform.position) < 0.4)
             {
                 transform.position = destination;
                 needMove = false;
