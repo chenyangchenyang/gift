@@ -31,9 +31,9 @@ public class ClickControl : WrappedBehaviour {
     {
         if (timePast > 3)
         {
+            timePast = 0;
             if (state < 3)
             {
-                soul[state].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
                 soul[state + 1].transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
                 soul[state + 1].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
                 ++state;
@@ -68,20 +68,19 @@ public class ClickControl : WrappedBehaviour {
     {
         if (state == 7)
         {
-            soul[state].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
             for (int i = 0; i < 8; ++i)
             {
-                soul[i].transform.position = new Vector3(-10000, -10000, 0);
+                soul[i].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
             }
-            Camera.main.GetComponent<CameraControl>().lookGameObject = player;
+            GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
+            GameManager._instance.GetControl();
 
             GameManager._instance.BackGroundAudio.GetComponent<Level4BackGroundAudio>().ChangeHuiYiHouing();
 
-            Invoke("Whiteout", 2);
+            // Invoke("Whiteout", 2);
         } 
         else
         {
-            soul[state].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
             soul[state + 1].transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
             soul[state + 1].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
             ++state;
