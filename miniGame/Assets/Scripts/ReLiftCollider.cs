@@ -15,7 +15,6 @@ public class ReLiftCollider : MonoBehaviour
             GlobalTool.SetString(GameManager._instance.PlayerPosition, GameManager._instance.Vector3ToString(rootGo.transform.position));
             GlobalTool.SetString(GameManager._instance.CameraPosition, GameManager._instance.Vector3ToString(
                 GameManager._instance.CaremaObject.transform.position));
-            print("ReLiftCollider OnTriggerEnter2D");
         }
     }
 }

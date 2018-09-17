@@ -106,7 +106,6 @@ public class ButtonControl : WrappedBehaviour {
                 GameManager._instance.GetControl();
                 GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
                 GameManager._instance.GlobalControllerObject.GetComponent<GlobalControl>().StartS1Bgm();
-                Invoke("ShowPaguang", 3);
                 return;
             default:
                 Invoke("Blackout", 0);
@@ -137,5 +136,5 @@ public partial class GlobalTool
     public static bool scene1StartHandled = false;
     public static bool needUi = true;
     public static bool hasShownPaGuang = false;
-    public static bool firstDeath = true;
+    public static int scene1Time = 0;
 }
