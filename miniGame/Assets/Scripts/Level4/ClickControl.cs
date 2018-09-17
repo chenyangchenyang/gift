@@ -68,11 +68,11 @@ public class ClickControl : WrappedBehaviour {
     {
         if (state == 7)
         {
-            for (int i = 0; i < 8; ++i)
+            for (int i = 0; i < 7; ++i)
             {
                 soul[i].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
             }
-            Invoke("ResumeFromRecall", 2);
+            Invoke("HideLastPic", 0.5f);
         } 
         else
         {
@@ -80,6 +80,12 @@ public class ClickControl : WrappedBehaviour {
             soul[state + 1].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
             ++state;
         }
+    }
+    
+    void HideLastPic()
+    {
+        soul[7].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+        Invoke("ResumeFromRecall", 2f);
     }
 
     void ResumeFromRecall()
