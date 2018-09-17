@@ -136,14 +136,32 @@ public partial class GameManager : MonoBehaviour
 
         GlobalTool.ChangeScene();
 
-        int nextActiveScene = SceneManager.GetActiveScene().buildIndex+ 1;
+        //int nextActiveScene = SceneManager.GetActiveScene().buildIndex+ 1;
 
-        if (nextActiveScene >= SceneManager.sceneCountInBuildSettings)
-        {
-            nextActiveScene = 0;
-        }
+        //if (nextActiveScene >= SceneManager.sceneCountInBuildSettings)
+        //{
+        //    nextActiveScene = 0;
+        //}
         
-        SceneManager.LoadScene(nextActiveScene);
+        //SceneManager.LoadScene(nextActiveScene);
+        if (SceneManager.GetActiveScene().name.Contains("Level1"))
+        {
+            GlobalTool.nextScene = 2;
+        }
+        else if (SceneManager.GetActiveScene().name.Contains("Level2"))
+        {
+            GlobalTool.nextScene = 3;
+        }
+        else if (SceneManager.GetActiveScene().name.Contains("Level3"))
+        {
+            GlobalTool.nextScene = 4;
+        }
+        else if (SceneManager.GetActiveScene().name.Contains("Level4"))
+        {
+            SceneManager.LoadScene("Level5");
+            return;
+        }
+        SceneManager.LoadScene("CutScene");
     }
 
     public void ChangeCameraLookAt(int idx)
