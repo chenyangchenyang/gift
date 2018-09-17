@@ -44,11 +44,17 @@ public class PlayerControl : MonoBehaviour
             speed = startSpeed;
             rb.sharedMaterial.friction = 1;
         }
+
+
     }
 
     private void FixedUpdate()
     {
         transform.rotation = Quaternion.identity;
+        if (gameObject != GameManager._instance.PuckBall && transform.position.y < -100)
+        {
+            GameManager._instance.ReStart();
+        }
     }
 
     public void PauseMove()

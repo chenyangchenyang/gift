@@ -57,8 +57,8 @@ public class KnifeControl : WrappedBehaviour {
                     // 切换到离别场景
                     Invoke("Blackout", 3);
                     Invoke("ShowMakeMutou", 4);
-                    Invoke("HideMakeMutou", 6);
-                    Invoke("Next", 7);
+                    Invoke("HideMakeMutou", 7);
+                    Invoke("Next", 8);
                 }
                 woodState += 1;
                 wood.GetComponent<SpriteRenderer>().sprite = 

@@ -67,7 +67,7 @@ public class TheaterCameraControl : MonoBehaviour {
 
     void Next()
     {
-        SceneManager.LoadScene("第二关");
+        SceneManager.LoadScene("Level2Recall");
         GlobalTool.justOpened = true;
     }
 }

@@ -31,7 +31,7 @@ public class ParentControl : MonoBehaviour {
 
     void ChangeScene()
     {
-        SceneManager.LoadScene("第二关");
+        SceneManager.LoadScene("Level2Recall");
     }
 
     public void Leave()
