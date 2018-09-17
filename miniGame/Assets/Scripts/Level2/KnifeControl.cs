@@ -11,6 +11,7 @@ public class KnifeControl : WrappedBehaviour {
     private float swipeDist;
     private float timePast;
     public int woodState = 1;
+    private float timeToPast = 4;
     private bool reseted = false;
 	// Use this for initialization
 	void Start () {
@@ -32,13 +33,17 @@ public class KnifeControl : WrappedBehaviour {
 
     private void OnMouseDrag()
     {
-        if (!reseted && woodState == 1)
+        if (!reseted && woodState >= 3)
         {
             timePast = 0;
             reseted = true;
         }
+        if (woodState > 3)
+        {
+            timeToPast = 2;
+        }
         Vector3 tmp = offset + Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (timePast >= 4 && (wood.transform.position.x - 7.6 <= transform.position.x &&
+        if (timePast >= timeToPast && (wood.transform.position.x - 7.6 <= transform.position.x &&
                 transform.position.x <= wood.transform.position.x - 2.6))
         {
             // TODO:播放木头声音
