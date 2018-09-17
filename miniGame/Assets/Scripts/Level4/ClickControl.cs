@@ -72,12 +72,7 @@ public class ClickControl : WrappedBehaviour {
             {
                 soul[i].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
             }
-            GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
-            GameManager._instance.GetControl();
-
-            GameManager._instance.BackGroundAudio.GetComponent<Level4BackGroundAudio>().ChangeHuiYiHouing();
-
-            // Invoke("Whiteout", 2);
+            Invoke("ResumeFromRecall", 2);
         } 
         else
         {
@@ -85,5 +80,17 @@ public class ClickControl : WrappedBehaviour {
             soul[state + 1].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
             ++state;
         }
+    }
+
+    void ResumeFromRecall()
+    {
+        GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
+        GameManager._instance.GetControl();
+        Camera.main.GetComponent<CameraControl>().lookGameObject = GameManager._instance.Player;
+
+        GameManager._instance.BackGroundAudio.GetComponent<Level4BackGroundAudio>().ChangeHuiYiHouing();
+        Camera.main.transform.position = GameObject.Find("huiyiFlag").GetComponent<HuiyiControl>().originPos;
+        Camera.main.orthographicSize = GameObject.Find("huiyiFlag").GetComponent<HuiyiControl>().originSize;
+        Invoke("Whiteout", 2);
     }
 }

@@ -9,6 +9,8 @@ public class HuiyiControl : WrappedBehaviour
     public GameObject huiyiFlag, wallpaper;
     public GameObject[] soul = new GameObject[8];
     public GameObject clickBox;
+    public float originSize;
+    public Vector3 originPos;
     private const float targetSize = 1.153179f;
     private Vector3 targetPos = new Vector3(-15.08f, -6.79f, -50);
     private int soulId = 0;
@@ -30,16 +32,20 @@ public class HuiyiControl : WrappedBehaviour
     {
         if (!showed)
         {
-            if (Mathf.Abs(Camera.main.transform.position.x - huiyiFlag.transform.position.x) < 0.1)
+            if (Mathf.Abs(GameManager._instance.Player.transform.position.x - huiyiFlag.transform.position.x) < 0.1)
             {
-
+                
                 GameManager._instance.BackGroundAudio.GetComponent<Level4BackGroundAudio>().ChangeHuiYi1();
+                originSize = Camera.main.orthographicSize;
+                originPos = Camera.main.transform.position;
                 sizeDiff = targetSize - Camera.main.orthographicSize;
                 posDiff = targetPos - Camera.main.transform.position;
                 showed = true;
                 pullIn = true;
+                Camera.main.GetComponent<CameraControl>().lookGameObject = null;
                 GameManager._instance.Player.GetComponent<PlayerControl>().PauseMove();
-                GameManager._instance.ReleaseControl(); 
+                GameManager._instance.ReleaseControl();
+                Invoke("Blackout", 2.8f);
             }   
         }
         if (pullIn && (!sizeok || !posok))
@@ -47,7 +53,7 @@ public class HuiyiControl : WrappedBehaviour
             if (!sizeok)
             {
                 float size = Camera.main.orthographicSize;
-                size += sizeDiff * Time.deltaTime;
+                size += 0.3f * sizeDiff * Time.deltaTime;
                 Camera.main.orthographicSize = size;
                 if (Mathf.Abs(size - targetSize) < 0.1)
                 {
@@ -58,23 +64,23 @@ public class HuiyiControl : WrappedBehaviour
             if (!posok)
             {
                 Vector3 pos = Camera.main.transform.position;
-                pos += posDiff * Time.deltaTime;
+                pos += 0.3f * posDiff * Time.deltaTime;
                 Camera.main.transform.position = pos;
-                if (Vector3.Distance(pos, targetPos) < 0.1)
+                print(Vector3.Distance(pos, targetPos));
+                if (Vector3.Distance(pos, targetPos) < 0.05)
                 {
-                    print(Vector3.Distance(pos, targetPos));
                     Camera.main.transform.position = targetPos;
                     posok = true;
                 }
             }
             if (posok && sizeok)
             {
-                StartSoul();
+                Invoke("StartSoul", 0);
             }
         }
     }
-    private float sizeDiff;
-    private Vector3 posDiff;
+    public float sizeDiff;
+    public Vector3 posDiff;
     public bool pullIn = false;
     public bool posok = false;
     public bool sizeok = false;
