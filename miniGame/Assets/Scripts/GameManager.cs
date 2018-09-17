@@ -148,7 +148,15 @@ public partial class GameManager : MonoBehaviour
         {
             GlobalTool.nextScene = 2;
         }
-        else if (SceneManager.GetActiveScene().name.Contains("Level2"))
+        else if (SceneManager.GetActiveScene().Equals("Level2Outside"))
+        {
+            SceneManager.LoadScene("Level2Inside");
+        }
+        else if (SceneManager.GetActiveScene().Equals("Level2Inside"))
+        {
+            SceneManager.LoadScene("Level2Recall");
+        }
+        else if (SceneManager.GetActiveScene().Equals("Level2Inside"))
         {
             GlobalTool.nextScene = 3;
         }
