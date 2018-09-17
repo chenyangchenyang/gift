@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class GlobalDefs : MonoBehaviour {
 
+    [HideInInspector]
     public float PuckTimeLength = 2;
+    [HideInInspector]
     public float puckTime = 0;
+    public float coolDown = 2;
+    public float runtimeCooldown;
 	// Use this for initialization
 	void Start () {
         GlobalTool.Init();
@@ -13,6 +17,7 @@ public class GlobalDefs : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        runtimeCooldown -= Time.deltaTime;
         puckTime += Time.deltaTime;
         if (GlobalTool.puckState == 1 && puckTime >= PuckTimeLength)
         {
@@ -22,6 +27,7 @@ public class GlobalDefs : MonoBehaviour {
 
     public void Puck()
     {
+        if (runtimeCooldown > 0) return;
         if(null == GlobalTool.puckBall)
         {
             print("null == GlobalTool.puckBall");
@@ -49,10 +55,10 @@ public class GlobalDefs : MonoBehaviour {
 
     public void GotoPuckBall()
     {
+        runtimeCooldown = coolDown;
         if (GlobalTool.puckState == 0)
             return;
         GlobalTool.GotoPuckBall();
-
         SetPuckState(0);
     }
 
