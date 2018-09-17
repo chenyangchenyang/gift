@@ -40,20 +40,25 @@ public class ChildControl : MonoBehaviour {
         else
         {
             Invoke("Blackout", 1.5f);
+
             Invoke("Next", 3.5f);
+
             Invoke("Whiteout", 4.5f);
         }
     }
 
     void Blackout()
     {
-        GlobalTool.Blackout();
+        GlobalTool.Blackout();       
+
+        GameManager._instance.BackGroundAudio.GetComponent<Level2BackGroundAudio>().ChangeHuiYi2();
     }
 
 
     void Whiteout()
-    {
-        GlobalTool.Whiteout();
+    {       
+
+        GlobalTool.Whiteout();        
     }
 
     void Next()

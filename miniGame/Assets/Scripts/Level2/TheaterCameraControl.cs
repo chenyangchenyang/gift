@@ -36,6 +36,10 @@ public class TheaterCameraControl : MonoBehaviour {
         }
         if (GlobalTool.reenter && GlobalTool.reenterNotHandled)
         {
+            //第二次进入
+
+            GameManager._instance.BackGroundAudio.GetComponent<Level2BackGroundAudioEnter>().ChangeLevel2Audio();
+
             GlobalTool.reenterNotHandled = false;
             zuo.GetComponent<Animation>().Play("zuofang");
             you.GetComponent<Animation>().Play("youfang");

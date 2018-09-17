@@ -54,6 +54,9 @@ public class Scene2GlobalControl : WrappedBehaviour {
         Scene2Global.Hide(GameObject.Find("CFish1"));
         Scene2Global.Hide(GameObject.Find("CFish2"));
         Scene2Global.Hide(GameObject.Find("CFish3"));
+
+        Invoke("ChangeBGAudio", 2.0f);
+
         Invoke("Blackout", 2);
         Invoke("Next", 4);
         Invoke("Whiteout", 6);
@@ -75,5 +78,10 @@ public class Scene2GlobalControl : WrappedBehaviour {
         Scene2Global.rightHandAlpha.ChangeVisible(true);
         Scene2Global.Show(Scene2Global.leftHand);
         Scene2Global.Show(Scene2Global.RightHand);
+    }
+
+    void ChangeBGAudio()
+    {
+        GameManager._instance.BackGroundAudio.GetComponent<Level2BackGroundAudio>().ChangeHuiYi3();
     }
 }

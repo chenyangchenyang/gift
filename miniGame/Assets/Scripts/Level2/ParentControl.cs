@@ -25,6 +25,9 @@ public class ParentControl : MonoBehaviour {
         {
             GlobalTool.woodJump = true;
             GlobalTool.Blackout();
+
+            ChangeBGChangeHuiYi5Down();
+
             Invoke("ChangeScene", 3);
         }
 	}
@@ -38,5 +41,10 @@ public class ParentControl : MonoBehaviour {
     {
         GetComponent<Animation>().Play("parentLeaving");
         leaving = true;
+    }
+
+    void ChangeBGChangeHuiYi5Down()
+    {
+        GameManager._instance.BgAudioSource.GetComponent<Level2BackGroundAudio>().ChangeHuiYi5Down();
     }
 }

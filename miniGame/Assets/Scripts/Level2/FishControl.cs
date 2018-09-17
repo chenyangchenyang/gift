@@ -57,8 +57,16 @@ public class FishControl : WrappedBehaviour {
         GameObject.Find("CFish1").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
         GameObject.Find("CFish2").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
         GameObject.Find("CFish3").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+
+        Invoke("ChangeBG4", 2);
+
         Invoke("Blackout", 2);
         Invoke("Next", 4);
         Invoke("Whiteout", 6);
+    }
+
+    void ChangeBG4()
+    {
+        GameManager._instance.BackGroundAudio.GetComponent<Level2BackGroundAudio>().ChangeHuiYi4();
     }
 }

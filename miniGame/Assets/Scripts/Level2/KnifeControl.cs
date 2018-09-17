@@ -65,6 +65,7 @@ public class KnifeControl : WrappedBehaviour {
                     Resources.Load("img/第二关场景3/mutou" + woodState, new Sprite().GetType()) as Sprite;
                 if (woodState == 5)
                 {
+                    Invoke("ChangeBG5",2.0f);
                     // 切换到下一个场景
                     Invoke("Blackout", 2);
                     Invoke("Next2", 4);
@@ -75,6 +76,11 @@ public class KnifeControl : WrappedBehaviour {
         }
 
         transform.position = tmp;
+    }
+
+    public void ChangeBG5()
+    {
+        GameManager._instance.BackGroundAudio.GetComponent<Level2BackGroundAudio>().ChangeHuiYi5();
     }
 
     void ShowMakeMutou()
