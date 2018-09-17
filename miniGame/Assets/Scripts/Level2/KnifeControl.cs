@@ -56,7 +56,9 @@ public class KnifeControl : WrappedBehaviour {
                     ShowS3();
                     // 切换到离别场景
                     Invoke("Blackout", 3);
-                    Invoke("Next", 5);
+                    Invoke("ShowMakeMutou", 4);
+                    Invoke("HideMakeMutou", 6);
+                    Invoke("Next", 7);
                 }
                 woodState += 1;
                 wood.GetComponent<SpriteRenderer>().sprite = 
@@ -74,6 +76,19 @@ public class KnifeControl : WrappedBehaviour {
 
         transform.position = tmp;
     }
+
+    void ShowMakeMutou()
+    {
+        var makemutou = GameObject.Find("makemutou");
+        makemutou.transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
+        makemutou.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
+    }
+
+    void HideMakeMutou()
+    {
+        GameObject.Find("makemutou").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+    }
+
 
     private void OnMouseUp()
     {

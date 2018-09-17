@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4715266761803724}
   - component: {fileID: 114647176481989020}
   m_Layer: 0
-  m_Name: CatFlag
+  m_Name: PictureFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
