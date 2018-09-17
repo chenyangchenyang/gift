@@ -86,7 +86,6 @@ public class ClickControl : WrappedBehaviour {
             soul[state].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
             soul[state + 1].transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
             soul[state + 1].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
-            Camera.main.GetComponent<CameraControl>().lookGameObject = player;
             ++state;
         }
     }
