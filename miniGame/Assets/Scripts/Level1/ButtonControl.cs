@@ -15,7 +15,7 @@ public class ButtonControl : WrappedBehaviour {
     public int type;
 
     private AudioSource buttonAudio;
-    private GameObject btStart, btContinue;
+    private GameObject btStart, btContinue, newbee;
     private GameObject[] leaves = new GameObject[4];
     private GameObject[] chapters = new GameObject[4];
     private int nextId = 1;
@@ -32,6 +32,7 @@ public class ButtonControl : WrappedBehaviour {
         {
             GlobalTool.Hide(chapters[i]);
         }
+        newbee = GameObject.Find("newbee");
         buttonAudio = GameObject.Find("ButtonAudio").GetComponent<AudioSource>();
         GameManager._instance.Player.GetComponent<PlayerControl>().PauseMove();
         GameManager._instance.ReleaseControl();
@@ -106,6 +107,7 @@ public class ButtonControl : WrappedBehaviour {
                 GameManager._instance.GetControl();
                 GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
                 GameManager._instance.GlobalControllerObject.GetComponent<GlobalControl>().StartS1Bgm();
+                Invoke("ShowNewBee", 1);
                 return;
             default:
                 Invoke("Blackout", 0);
@@ -128,6 +130,27 @@ public class ButtonControl : WrappedBehaviour {
                 SceneManager.LoadScene("Level4");
                 return;
         }
+    }
+
+
+    void ShowNewBee()
+    {
+        newbee.transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
+        newbee.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
+        newbee.GetComponent<NewbeeControl>().show = true;
+        Invoke("RemoveNewBee", 4);
+    }
+
+    void RemoveNewBee()
+    {
+        newbee.GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+        Invoke("MoveOutNewbee", 2);
+    }
+
+    void MoveOutNewbee()
+    {
+        newbee.transform.position = new Vector3(1000, 1000, 0);
+        newbee.GetComponent<NewbeeControl>().show = false;
     }
 }
 

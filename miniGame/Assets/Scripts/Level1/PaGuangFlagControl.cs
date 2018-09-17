@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PaGuangFlagControl : MonoBehaviour {
 
-    private GameObject light0, lightAlways;
+    private GameObject light0, lightAlways, newbee;
 	// Use this for initialization
 	void Start () {
         if (GlobalTool.scene1Time > 0)
@@ -15,6 +15,7 @@ public class PaGuangFlagControl : MonoBehaviour {
             lightAlways.SetActive(false);
             print("moving lightalways");
         }
+        newbee = GameObject.Find("newbee");
         ++GlobalTool.scene1Time;
 	}
 	
@@ -31,3 +32,4 @@ public class PaGuangFlagControl : MonoBehaviour {
         }
 	}
 }
+
