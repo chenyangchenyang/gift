@@ -157,7 +157,7 @@ public partial class GameManager : MonoBehaviour
         {
             GlobalTool.nextScene = 3;
         }
-        else if (SceneManager.GetActiveScene().name.Contains("Level3"))
+        else if (SceneManager.GetActiveScene().name.Contains("Level3") || SceneManager.GetActiveScene().name.Contains("level3"))
         {
             GlobalTool.nextScene = 4;
         }
