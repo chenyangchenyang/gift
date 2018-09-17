@@ -21,7 +21,7 @@ public class CutSceneCameraControl : MonoBehaviour {
     void ShowChap()
     {
         chapMap[GlobalTool.nextScene].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
-        Invoke("HideChap", 3);
+        Invoke("HideChap", 5);
     }
 
     void HideChap()
