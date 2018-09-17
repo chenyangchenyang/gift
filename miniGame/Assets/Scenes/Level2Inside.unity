@@ -883,6 +883,21 @@ Prefab:
       propertyPath: RightCameraBorderDistanceEndPointX
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114569835811029574, guid: a22ff9d803192404aa60bb57aee8da3d,
+        type: 2}
+      propertyPath: FootStepAudios.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 50935402621b98d41a11fdbf91478572, type: 3}
+    - target: {fileID: 114569835811029574, guid: a22ff9d803192404aa60bb57aee8da3d,
+        type: 2}
+      propertyPath: FootStepAudios.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0b5a8e5d61ca8ab4fbdd5c30d506d439, type: 3}
+    - target: {fileID: 114569835811029574, guid: a22ff9d803192404aa60bb57aee8da3d,
+        type: 2}
+      propertyPath: FootStepAudios.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: b31999fe95a7da24aa3874ef6ebc1cd4, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a22ff9d803192404aa60bb57aee8da3d, type: 2}
   m_IsPrefabParent: 0
