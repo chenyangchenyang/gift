@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraControl : MonoBehaviour {
-
 	private Vector3 startPosition;
     private Vector3 offset;
     // Use this for initialization
