@@ -14,7 +14,8 @@ public class CameraControl : MonoBehaviour {
     public float speed = 10;
 
 	void Start () 
-	{     
+	{
+        
         lookGameObject = GameManager._instance.Player;
         startPosition = transform.position;
         offset = transform.position - lookGameObject.transform.position;
