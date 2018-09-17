@@ -26,9 +26,8 @@ public class ParentControl : MonoBehaviour {
             GlobalTool.woodJump = true;
             GlobalTool.Blackout();
 
-            ChangeBGChangeHuiYi5Down();
-
             Invoke("ChangeScene", 3);
+            ChangeBGChangeHuiYi5Down();
         }
 	}
 
