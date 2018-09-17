@@ -99,7 +99,7 @@ public partial class GameManager : MonoBehaviour
         string cameraPositionStr = GlobalTool.GetString(CameraPosition);
 
         print("playerPositionStr :"+ playerPositionStr);
-
+        print("cameraPositionStr :" + cameraPositionStr);
         Player.transform.position = String2Vector3(playerPositionStr);
         CaremaObject.transform.position = String2Vector3(cameraPositionStr);
     }

@@ -21,6 +21,7 @@ public class GlobalControl : MonoBehaviour {
             if (!GlobalTool.needUi)
             {
                 Camera.main.transform.position = new Vector3(-23.23f, -1.5f, -50);
+                Camera.main.GetComponent<CameraControl>().Update();
                 GlobalTool.scene1StartHandled = true;
                 GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
                 GameManager._instance.GetControl();

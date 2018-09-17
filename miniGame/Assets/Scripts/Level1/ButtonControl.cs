@@ -15,12 +15,13 @@ public class ButtonControl : WrappedBehaviour {
     public int type;
 
     private AudioSource buttonAudio;
-    private GameObject btStart, btContinue, newbee;
+    private GameObject btStart, btContinue, newbee, gift;
     private GameObject[] leaves = new GameObject[4];
     private GameObject[] chapters = new GameObject[4];
     private int nextId = 1;
 	// Use this for initialization
 	void Start () {
+        gift = GameObject.Find("gift");
         btStart = GameObject.Find("START");
         btContinue = GameObject.Find("CONTINUE");
         for (int i = 0; i < 4; ++i)
@@ -59,11 +60,8 @@ public class ButtonControl : WrappedBehaviour {
         if (type == 0)
         {
             nextId = 1;
+            gift.GetComponent<Scene22AlphaControl>().ChangeVisible(false);
             Invoke("ChangeScene", 1);
-        }
-        if (type > 10)
-        {
-            nextId = type - 10;
         }
         
         if (type < 2)
@@ -72,6 +70,7 @@ public class ButtonControl : WrappedBehaviour {
             btContinue.GetComponent<Scene22AlphaControl>().ChangeVisible(false);
             if (type == 1)
             {
+                Invoke("HideStartButton", 1);
                 for (int i = 0; i < 4; ++i)
                 {
                     GlobalTool.Show(chapters[i]);
@@ -82,6 +81,7 @@ public class ButtonControl : WrappedBehaviour {
 
         if (type > 10)
         {
+            nextId = type - 10;
             leaves[type - 11].GetComponent<Scene22AlphaControl>().ChangeVisible(true);
             for (int i = 11; i < 15; ++i)
             {
@@ -94,6 +94,12 @@ public class ButtonControl : WrappedBehaviour {
         }
     }
 
+    void HideStartButton()
+    {
+        btStart.transform.localScale = Vector3.zero;
+        btContinue.transform.localScale = Vector3.zero;
+    }
+
     void ChangeScene()
     {
         GlobalTool.needUi = false;
@@ -101,20 +107,28 @@ public class ButtonControl : WrappedBehaviour {
         switch (nextId)
         {
             case 1:
-                var cameraControl = Camera.main.GetComponent<CameraControl>();
-                cameraControl.needMove = true;
-                cameraControl.destination = new Vector3(-23.3f, -1.5f, -50);
-                GameManager._instance.GetControl();
-                GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
-                GameManager._instance.GlobalControllerObject.GetComponent<GlobalControl>().StartS1Bgm();
-                Invoke("ShowChap1Desc", 1);
-                Invoke("ShowNewBee", 1);
+                gift.GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+                chapters[0].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+                leaves[0].GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+                Invoke("ShowChap1Desc", 0);
+                Invoke("StartScene1", 3);
                 return;
             default:
                 Invoke("Blackout", 0);
                 Invoke("ExternalScene", 2);
                 return;
         }
+    }
+
+    void StartScene1()
+    {
+        var cameraControl = Camera.main.GetComponent<CameraControl>();
+        cameraControl.needMove = true;
+        cameraControl.destination = new Vector3(-23.3f, -1.5f, -50);
+        GameManager._instance.GetControl();
+        GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
+        GameManager._instance.GlobalControllerObject.GetComponent<GlobalControl>().StartS1Bgm();
+        Invoke("ShowNewBee", 2);
     }
 
     void ExternalScene()
@@ -157,7 +171,7 @@ public class ButtonControl : WrappedBehaviour {
     void ShowChap1Desc()
     {
         GameObject.Find("Chap1Desc").GetComponent<Scene22AlphaControl>().ChangeVisible(true);
-        Invoke("HideChap1Desc", 2);
+        Invoke("HideChap1Desc", 2.5f);
     }
 
     void HideChap1Desc()

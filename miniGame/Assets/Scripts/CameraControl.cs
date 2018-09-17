@@ -21,7 +21,7 @@ public class CameraControl : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () 
+	public void Update () 
 	{
         if (needMove)
         {
@@ -42,9 +42,16 @@ public class CameraControl : MonoBehaviour {
             if (x <= GameManager._instance.GetLeftCameraBorder() ||
                 x >= GameManager._instance.GetRightCameraBorder())
             {
+                if (GlobalTool.forceLookAtPlayer)
+                {
+                    GlobalTool.forceLookAtPlayer = false;
+                    goto fixPosition;
+                }
                 return;
             }
 
+
+fixPosition:
             if (transform.position.x < startPosition.x)
             {
                 Vector3 tmp = transform.position;
@@ -57,4 +64,9 @@ public class CameraControl : MonoBehaviour {
             transform.position = pos;
         }
     }
+}
+
+public partial class GlobalTool
+{
+    public static bool forceLookAtPlayer = false;
 }

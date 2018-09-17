@@ -18,6 +18,7 @@ public class PaGuangFlagControl : MonoBehaviour {
         }
         newbee = GameObject.Find("newbee");
         ++GlobalTool.scene1Time;
+        GlobalTool.forceLookAtPlayer = true;
 	}
 	
 	// Update is called once per frame
