@@ -107,6 +107,7 @@ public class ButtonControl : WrappedBehaviour {
                 GameManager._instance.GetControl();
                 GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
                 GameManager._instance.GlobalControllerObject.GetComponent<GlobalControl>().StartS1Bgm();
+                Invoke("ShowChap1Desc", 1);
                 Invoke("ShowNewBee", 1);
                 return;
             default:
@@ -151,6 +152,17 @@ public class ButtonControl : WrappedBehaviour {
     {
         newbee.transform.position = new Vector3(1000, 1000, 0);
         newbee.GetComponent<NewbeeControl>().show = false;
+    }
+
+    void ShowChap1Desc()
+    {
+        GameObject.Find("Chap1Desc").GetComponent<Scene22AlphaControl>().ChangeVisible(true);
+        Invoke("HideChap1Desc", 2);
+    }
+
+    void HideChap1Desc()
+    {
+        GameObject.Find("Chap1Desc").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
     }
 }
 
