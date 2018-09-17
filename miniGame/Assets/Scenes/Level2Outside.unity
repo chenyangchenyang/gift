@@ -553,7 +553,7 @@ Prefab:
     - target: {fileID: 114415748553950466, guid: bb94f1a370d591a459b33bdfe67bdf6c,
         type: 2}
       propertyPath: m_Text
-      value: "\u7B2C\u4E8C\u5173"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 224155339364060558, guid: bb94f1a370d591a459b33bdfe67bdf6c,
         type: 2}
