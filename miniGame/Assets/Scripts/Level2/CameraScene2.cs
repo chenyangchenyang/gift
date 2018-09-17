@@ -32,6 +32,18 @@ public class CameraScene2 : MonoBehaviour {
     public void Start2_1()
     {
         transform.position = pos1;
+        Invoke("HideOpenAnim", .5f);
+    }
+
+    void HideOpenAnim()
+    {
+        GameObject.Find("openAnim").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+        Invoke("RemoveOpenAnim", 1.5f);
+    }
+
+    void RemoveOpenAnim()
+    {
+        GameObject.Find("openAnim").transform.localScale = Vector3.zero;
     }
 
     public void Start2_2()
