@@ -33,6 +33,8 @@ public class ParentControl : MonoBehaviour {
 
     void ChangeScene()
     {
+        GlobalTool.NonBg = false;
+
         SceneManager.LoadScene("Level2Recall");
     }
 
@@ -44,6 +46,16 @@ public class ParentControl : MonoBehaviour {
 
     void ChangeBGChangeHuiYi5Down()
     {
-        GameManager._instance.BgAudioSource.GetComponent<Level2BackGroundAudio>().ChangeHuiYi5Down();
+        GameManager._instance.BackGroundAudio.GetComponent<Level2BackGroundAudio>().ChangeHuiYi5Down();
+    }
+}
+
+public partial class GlobalTool
+{
+    static public bool NonBg= true;
+
+    static public bool HasBG()
+    {
+        return NonBg;
     }
 }

@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class KnifeControl : WrappedBehaviour {
 
+    public GameObject XiaoMuTouAudio;
+
+    private AudioSource AudioSourceMuTou;
+
     private Vector3 offset;
     private Vector3 startPos;
     private GameObject wood;
@@ -18,7 +22,10 @@ public class KnifeControl : WrappedBehaviour {
         startPos = transform.position;
         wood = GameObject.Find("WoodHand");
         timePast = -3;
-	}
+
+        AudioSourceMuTou = XiaoMuTouAudio.GetComponent<AudioSource>();
+
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -47,6 +54,12 @@ public class KnifeControl : WrappedBehaviour {
                 transform.position.x <= wood.transform.position.x - 2.6))
         {
             // TODO:播放木头声音
+
+            //if(!AudioSourceMuTou.isPlaying)
+            {
+                AudioSourceMuTou.Play();
+            }
+
             swipeDist += Vector3.Distance(tmp, transform.position);
             if (swipeDist > 2)
             {

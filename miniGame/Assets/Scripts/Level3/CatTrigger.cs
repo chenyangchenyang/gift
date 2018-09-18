@@ -15,7 +15,12 @@ public class CatTrigger : MonoBehaviour {
 
         if (rootGo == GameManager._instance.Player)
         {
-            CatGO.GetComponent<SpriteRenderer>().sprite = CatSprite;
+            if(null != CatGO)
+            {
+                CatGO.GetComponent<SpriteRenderer>().sprite = CatSprite;
+            }
+            
+            GetComponent<AudioSource>().Play();
         }
     }
 }

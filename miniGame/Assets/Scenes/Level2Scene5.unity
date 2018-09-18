@@ -1792,7 +1792,23 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: f1860cc658b425246990397bfb3b0bfe, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 82396032819502988, guid: 3974de3c8fb979b46a6eccee743895ed,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82396032819502988, guid: 3974de3c8fb979b46a6eccee743895ed,
+        type: 2}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82396032819502988, guid: 3974de3c8fb979b46a6eccee743895ed,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114822714211265900, guid: 3974de3c8fb979b46a6eccee743895ed, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3974de3c8fb979b46a6eccee743895ed, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1234032194 stripped
@@ -1800,6 +1816,22 @@ GameObject:
   m_PrefabParentObject: {fileID: 1278241108501242, guid: 3974de3c8fb979b46a6eccee743895ed,
     type: 2}
   m_PrefabInternal: {fileID: 1234032193}
+--- !u!114 &1234032195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234032194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0158f3a006abba48a40d94f02ae5137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HuiYi2: {fileID: 0}
+  HuiYi_MoYu: {fileID: 0}
+  HuiYi_MuDiao: {fileID: 0}
+  HuiYi_LiBie: {fileID: 0}
+  BgAudioSource: {fileID: 0}
 --- !u!1 &1265592765
 GameObject:
   m_ObjectHideFlags: 0

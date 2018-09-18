@@ -44,7 +44,7 @@ public partial class GameManager : MonoBehaviour
     private Vector3 LeftPoint;
 
     private AudioSource FootAudioSource;
-
+    
     private AudioSource PuckSkillAudioSource;
 
     [HideInInspector]
@@ -61,7 +61,12 @@ public partial class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {        
+    {
+        if(!GlobalTool.HasBG())
+        {
+            BackGroundAudio.GetComponent<AudioSource>().gameObject.SetActive(false);
+        }      
+
         Initialized();
         Camera.main.GetComponent<CameraControl>().lookGameObject = GameObject.Find("Player");
     }
@@ -72,9 +77,12 @@ public partial class GameManager : MonoBehaviour
          
         InitializedPosition();
 
-        PuckBall.transform.position = Player.transform.position - new Vector3(2, 0, 0);
+        //if(null != Player  &&  null != PuckBall)
+        {
+            PuckBall.transform.position = Player.transform.position - new Vector3(2, 0, 0);
 
-        LeftPoint = PuckBall.transform.position;
+            LeftPoint = PuckBall.transform.position;
+        }       
 
         InitializedAudioSource();
     }
@@ -84,7 +92,10 @@ public partial class GameManager : MonoBehaviour
         PuckSkillAudioSource = GetComponent<AudioSource>();
         PuckSkillAudioSource.Stop();
 
-        FootAudioSource = Player.GetComponent<AudioSource>();
+        if(null != Player)
+        {
+            FootAudioSource = Player.GetComponent<AudioSource>();
+        }        
 
         BgAudioSource= BackGroundAudio.GetComponent<AudioSource>();      
     }
@@ -106,13 +117,14 @@ public partial class GameManager : MonoBehaviour
 
     void Update()
     {
-
+      
         if (PuckBall.transform.position.x < LeftPoint.x)
         {
             PuckBall.transform.position = LeftPoint;
 
             return;
         }
+      
 
         if (Player.transform.position.x < LeftPoint.x)
         {
@@ -120,7 +132,11 @@ public partial class GameManager : MonoBehaviour
 
             return;
         }
-      
+
+        //if(null == PuckBall || null == Player)
+        //{
+        //    return;
+        //}
 
         if (Player.transform.position.x >= EndPointX  || PuckBall.transform.position.x>= EndPointX)
         {
@@ -361,7 +377,7 @@ public partial class GameManager
     {
         if(MySubAudioSource.volume> 0.001f)
         {
-            MySubAudioSource.volume -= 0.001f;
+            MySubAudioSource.volume -= 0.0001f;
         }
         
         while (MySubAudioSource.volume > 0 && MySubAudioSource.volume< 1.0f)

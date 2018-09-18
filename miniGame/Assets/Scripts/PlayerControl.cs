@@ -11,7 +11,9 @@ public class PlayerControl : MonoBehaviour
     public Vector2 lastPosition;
     public Vector2 lastDir;
 	private Text TextComponent;
-    private float speed = 1;
+
+    [HideInInspector]
+    public float speed = 1;
     [SerializeField]
     private float addSpeed = 0;
 
