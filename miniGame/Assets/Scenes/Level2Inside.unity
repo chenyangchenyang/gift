@@ -315,6 +315,7 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   lastPosition: {x: 0, y: 0}
   lastDir: {x: 0, y: 0}
+  speed: 1
   addSpeed: 0
   startSpeed: 2.3
 --- !u!82 &110411884
@@ -2054,6 +2055,7 @@ MonoBehaviour:
   dir: {x: 0, y: 0}
   lastPosition: {x: 0, y: 0}
   lastDir: {x: 0, y: 0}
+  speed: 1
   addSpeed: -8
   startSpeed: 10
 --- !u!50 &682442892
@@ -3135,6 +3137,11 @@ Prefab:
     - target: {fileID: 1621264255352236, guid: 8a11f06b87ecc704595af1d7521b842e, type: 2}
       propertyPath: m_Name
       value: GlobalHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 114677380148839736, guid: 8a11f06b87ecc704595af1d7521b842e,
+        type: 2}
+      propertyPath: PuckTimeLength
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a11f06b87ecc704595af1d7521b842e, type: 2}

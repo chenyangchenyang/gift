@@ -5,16 +5,31 @@ using UnityEngine;
 public class Scene2GlobalControl : WrappedBehaviour {
 
     int dumplings = 4;
-
+    GameObject mouseHint;
+    Queue<GameObject> toDestroy = new Queue<GameObject>();
     // Use this for initialization
     void Start () {
-		
+        mouseHint = GameObject.Find("MouseHint");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetMouseButtonDown(0))
+        {
+            GameObject mouseHint = Resources.Load("Prefabs/MouseHint") as GameObject;
+            mouseHint = Instantiate(mouseHint);
+            mouseHint.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
+            mouseHint.GetComponent<Animator>().SetBool("Playing", true);
+            toDestroy.Enqueue(mouseHint);
+            Invoke("HideMouseHint", 17f / 40f);
+        }
 	}
+
+    void HideMouseHint()
+    {
+        var mouseHint = toDestroy.Dequeue();
+        Destroy(mouseHint);
+    }
 
     public void ShowTwoHands()
     {
