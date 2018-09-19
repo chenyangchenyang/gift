@@ -21,10 +21,12 @@ public class CameraScene2 : MonoBehaviour {
         {
             Start2_1();
         }
+
+        //Start2_3();
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
 		
 	}

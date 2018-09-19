@@ -22,8 +22,7 @@ public class FishControl : WrappedBehaviour {
         if (!Scene2Global.cheering)
         {
             Scene2Global.Hide(gameObject);
-            GameObject.Find("C" + gameObject.transform.parent.gameObject.name)
-                .GetComponent<Scene22AlphaControl>().ChangeVisible(true);
+            GameObject.Find("C" + gameObject.transform.parent.gameObject.name).SetActive(true);
             GameObject.Find("FishGirl").GetComponent<SpriteRenderer>().sprite =
                 Resources.Load<Sprite>("img/第二关场景4/cheerGirl");
             ++Scene2Global.fishCount;
@@ -54,9 +53,9 @@ public class FishControl : WrappedBehaviour {
         GameObject.Find("FishOldMan").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
         GameObject.Find("Leaving").GetComponent<Scene22AlphaControl>().ChangeVisible(true);
         GameObject.Find("Junket").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
-        GameObject.Find("CFish1").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
-        GameObject.Find("CFish2").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
-        GameObject.Find("CFish3").GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+        GameObject.Find("CFish1").SetActive(false);
+        GameObject.Find("CFish2").SetActive(false);
+        GameObject.Find("CFish3").SetActive(false);
 
         Invoke("ChangeBG4", 2);
 

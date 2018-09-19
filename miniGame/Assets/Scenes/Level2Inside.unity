@@ -317,7 +317,18 @@ MonoBehaviour:
   lastDir: {x: 0, y: 0}
   speed: 1
   addSpeed: 0
-  startSpeed: 2.3
+  SpeedStand:
+  - 2
+  - 0
+  - 0
+  SpeedAnimation:
+  - 1
+  - 1
+  - 1
+  SpriteColor:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
 --- !u!82 &110411884
 AudioSource:
   m_ObjectHideFlags: 0
@@ -385,7 +396,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2057,7 +2068,18 @@ MonoBehaviour:
   lastDir: {x: 0, y: 0}
   speed: 1
   addSpeed: -8
-  startSpeed: 10
+  SpeedStand:
+  - 10
+  - 0
+  - 0
+  SpeedAnimation:
+  - 1
+  - 1
+  - 1
+  SpriteColor:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &682442892
 Rigidbody2D:
   serializedVersion: 4

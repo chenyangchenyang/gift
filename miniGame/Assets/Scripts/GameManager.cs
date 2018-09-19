@@ -121,8 +121,8 @@ public partial class GameManager : MonoBehaviour
 
     void Update()
     {
-      
-        if (PuckBall.transform.position.x < LeftPoint.x)
+
+        if (PuckBall != null && PuckBall.transform.position.x < LeftPoint.x)
         {
             PuckBall.transform.position = LeftPoint;
 
@@ -130,7 +130,7 @@ public partial class GameManager : MonoBehaviour
         }
       
 
-        if (Player.transform.position.x < LeftPoint.x)
+        if (Player != null && Player.transform.position.x < LeftPoint.x)
         {
             Player.transform.position = LeftPoint;
 
@@ -142,7 +142,7 @@ public partial class GameManager : MonoBehaviour
         //    return;
         //}
 
-        if (Player.transform.position.x >= EndPointX  || PuckBall.transform.position.x>= EndPointX)
+        if (Player != null && Player.transform.position.x >= EndPointX  || PuckBall != null && PuckBall.transform.position.x>= EndPointX)
         {
             SwitchLevelAnimation.SetActive(true);
 
