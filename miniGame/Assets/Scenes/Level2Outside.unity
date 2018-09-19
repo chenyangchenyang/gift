@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 110411883}
   - component: {fileID: 110411885}
   - component: {fileID: 110411884}
+  - component: {fileID: 110411887}
   m_Layer: 9
   m_Name: Player
   m_TagString: OldMan
@@ -391,6 +392,13 @@ MonoBehaviour:
   speed: 1
   addSpeed: 0
   startSpeed: 2.3
+  SpeedForFirstSub: 0
+  SpeedForSecSub: 0
+  CurStandSpeed: 0
+  SpeedStand:
+  - 0
+  - 0
+  - 0
 --- !u!82 &110411884
 AudioSource:
   m_ObjectHideFlags: 0
@@ -508,6 +516,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &110411887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 110411881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ee18fd84d5a4f4eb62c0f995bcdacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Img: {fileID: 563421297}
+  Offset: {x: 0, y: 0, z: 0}
 --- !u!1001 &138677954
 Prefab:
   m_ObjectHideFlags: 0
@@ -1533,6 +1554,53 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
+--- !u!1001 &563421296
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4907200088519900, guid: af29e3e8bfde2784d83a2da914631c68, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907200088519900, guid: af29e3e8bfde2784d83a2da914631c68, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907200088519900, guid: af29e3e8bfde2784d83a2da914631c68, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907200088519900, guid: af29e3e8bfde2784d83a2da914631c68, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907200088519900, guid: af29e3e8bfde2784d83a2da914631c68, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907200088519900, guid: af29e3e8bfde2784d83a2da914631c68, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907200088519900, guid: af29e3e8bfde2784d83a2da914631c68, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907200088519900, guid: af29e3e8bfde2784d83a2da914631c68, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: af29e3e8bfde2784d83a2da914631c68, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &563421297 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1135271957674056, guid: af29e3e8bfde2784d83a2da914631c68,
+    type: 2}
+  m_PrefabInternal: {fileID: 563421296}
 --- !u!4 &601064933 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4715266761803724, guid: 92b85828576aa794a890c62f5559541a,
@@ -1871,6 +1939,13 @@ MonoBehaviour:
   speed: 1
   addSpeed: -8
   startSpeed: 10
+  SpeedForFirstSub: 0
+  SpeedForSecSub: 0
+  CurStandSpeed: 0
+  SpeedStand:
+  - 0
+  - 0
+  - 0
 --- !u!50 &682442892
 Rigidbody2D:
   serializedVersion: 4

@@ -21,11 +21,28 @@ public class PlayerControl : MonoBehaviour
     private float startSpeed;
     private float lastSpeed;
 
+    public float SpeedForFirstSub;
+    public float SpeedForSecSub;
+
+    [HideInInspector]
+    public float CurStandSpeed;
+
+    [HideInInspector]
+    public float[] SpeedStand= new float[3];
+
     void Start () 
 	{
         lastSpeed = speed;
-        lastPosition = gameObject.GetComponent<Rigidbody2D>().position;
-	}
+        lastPosition = gameObject.GetComponent<Rigidbody2D>().position;    
+
+        if(0 == GlobalTool.CurDeathCount)
+        {
+            CurStandSpeed = speed;
+        }
+        SpeedStand[0] = speed;
+        SpeedStand[1] = SpeedForFirstSub;
+        SpeedStand[2] = SpeedForSecSub;
+    }
 	
 
 	void Update () 
@@ -47,7 +64,7 @@ public class PlayerControl : MonoBehaviour
             rb.sharedMaterial.friction = 1;
         }
 
-
+        UpdateSpeed();
     }
 
     private void FixedUpdate()
@@ -77,7 +94,7 @@ public class PlayerControl : MonoBehaviour
 
     public void PlayFootStep()
     {
-        if(gameObject != GameManager._instance.Player)
+        if (gameObject != GameManager._instance.Player)
         {
             return;
         }
@@ -85,6 +102,16 @@ public class PlayerControl : MonoBehaviour
         GameManager._instance.PlayFootStep();
     }
 
+
+    private void UpdateSpeed()
+    {
+        //print("CurStandSpeed : "+ CurStandSpeed);
+
+        if(speed > CurStandSpeed)
+        {
+            speed = CurStandSpeed;
+        }
+    }
 
 
     private float StepPerMS;
@@ -115,5 +142,20 @@ public class PlayerControl : MonoBehaviour
                 yield return new WaitForSeconds(0.001f);
             }
         }
+    }
+}
+
+public partial class GlobalTool
+{
+    public static int CurDeathCount = 0;
+
+    public static void SetCurDeathCount(int idx)
+    {
+        PlayerControl player= GameManager._instance.Player.GetComponent<PlayerControl>();
+
+        if(player.SpeedStand!= null && idx< player.SpeedStand.Length && idx>= 0)
+        {
+            player.CurStandSpeed = player.SpeedStand[idx];
+        }        
     }
 }

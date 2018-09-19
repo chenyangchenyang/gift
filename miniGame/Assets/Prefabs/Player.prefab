@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 114821173324254230}
   - component: {fileID: 95921856198154246}
   - component: {fileID: 82082607490223702}
+  - component: {fileID: 114121257064424522}
   m_Layer: 9
   m_Name: Player
   m_TagString: OldMan
@@ -789,6 +790,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114121257064424522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1580860029573658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ee18fd84d5a4f4eb62c0f995bcdacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Img: {fileID: 0}
+  Offset: {x: 0, y: 0, z: 0}
 --- !u!114 &114821173324254230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -805,6 +819,15 @@ MonoBehaviour:
   lastPosition: {x: 0, y: 0}
   lastDir: {x: 0, y: 0}
   speed: 2.3
+  addSpeed: 0
+  startSpeed: 0
+  SpeedForFirstSub: 0
+  SpeedForSecSub: 0
+  CurStandSpeed: 0
+  SpeedStand:
+  - 0
+  - 0
+  - 0
 --- !u!212 &212114751568237170
 SpriteRenderer:
   m_ObjectHideFlags: 1
