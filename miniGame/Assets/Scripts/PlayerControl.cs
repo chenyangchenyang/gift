@@ -84,4 +84,36 @@ public class PlayerControl : MonoBehaviour
 
         GameManager._instance.PlayFootStep();
     }
+
+
+
+    private float StepPerMS;
+    private float FinialV;
+    public void AdjustSpeed(float stepPerMS, float finalV)
+    {
+        StepPerMS = stepPerMS;
+        FinialV   = finalV;
+        StartCoroutine(OnAdjustSpeed());
+    }
+    private IEnumerator OnAdjustSpeed()
+    {
+        if(StepPerMS< 0)
+        {
+            while(speed > FinialV)
+            {
+                speed += StepPerMS;
+
+                yield return new WaitForSeconds(0.001f);
+            }
+        }
+        else
+        {
+            while (speed < FinialV)
+            {
+                speed += StepPerMS;
+
+                yield return new WaitForSeconds(0.001f);
+            }
+        }
+    }
 }
