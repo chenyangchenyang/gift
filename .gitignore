@@ -59,3 +59,4 @@ miniGame/Assets/Scripts/Level2/ParentControl.cs
 miniGame/Assets/Scripts/Level2/Scene22AlphaControl.cs
 miniGame/Assets/Scripts/Level4/HuiyiControl.cs
 miniGame/ProjectSettings/ProjectSettings.asset
+*.meta
