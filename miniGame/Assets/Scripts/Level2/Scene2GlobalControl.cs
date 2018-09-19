@@ -5,12 +5,14 @@ using UnityEngine;
 public class Scene2GlobalControl : WrappedBehaviour {
 
     int dumplings = 4;
-    GameObject mouseHint;
+    GameObject mouseHint, knifehint;
     Queue<GameObject> toDestroy = new Queue<GameObject>();
     // Use this for initialization
     void Start () {
         mouseHint = GameObject.Find("MouseHint");
-	}
+        knifehint = GameObject.Find("knifehint");
+        knifehint.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,7 +25,29 @@ public class Scene2GlobalControl : WrappedBehaviour {
             toDestroy.Enqueue(mouseHint);
             Invoke("HideMouseHint", 17f / 40f);
         }
+
+
+        GlobalTool.idleTime += Time.deltaTime;
+
+
+
+        if (GlobalTool.needCheckKnifeIdle)
+        {
+            if (GlobalTool.idleTime > 4)
+            {
+                GlobalTool.idleTime = -2;
+                knifehint.SetActive(true);
+                knifehint.GetComponent<Animation>().Play("hint-left");
+                Invoke("HideKnifeHint", 2);
+
+            }
+        }
 	}
+
+    void HideKnifeHint()
+    {
+        knifehint.SetActive(false);
+    }
 
     void HideMouseHint()
     {
@@ -99,4 +123,11 @@ public class Scene2GlobalControl : WrappedBehaviour {
     {
         GameManager._instance.BackGroundAudio.GetComponent<Level2BackGroundAudio>().ChangeHuiYi3();
     }
+}
+
+
+public partial class GlobalTool
+{
+    public static float idleTime = 0;
+    public static bool needCheckKnifeIdle = false;
 }

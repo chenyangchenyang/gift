@@ -767,7 +767,7 @@ Prefab:
         type: 2}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 408604304}
+      objectReference: {fileID: 0}
     - target: {fileID: 114569835811029574, guid: a22ff9d803192404aa60bb57aee8da3d,
         type: 2}
       propertyPath: PlayerControlUI
@@ -831,6 +831,11 @@ Prefab:
     - target: {fileID: 82150024296293864, guid: a22ff9d803192404aa60bb57aee8da3d,
         type: 2}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82150024296293864, guid: a22ff9d803192404aa60bb57aee8da3d,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

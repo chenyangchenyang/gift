@@ -20,8 +20,8 @@ public class ParentControl : MonoBehaviour {
         {
             transform.position = transform.position + speed * dir * Time.deltaTime;
         }
-
-        if (Mathf.Abs(transform.position.x - GameObject.Find("Player").transform.position.x) >= 10)
+        print(Mathf.Abs(transform.position.x - GameObject.Find("Player").transform.position.x));
+        if (Mathf.Abs(transform.position.x - GameObject.Find("Player").transform.position.x) >= 14)
         {
             GlobalTool.woodJump = true;
             GlobalTool.Blackout();

@@ -18,6 +18,8 @@ public class MudiaoOpenControl : MonoBehaviour {
     {
         GetComponent<Scene22AlphaControl>().ChangeVisible(false);
         transform.GetChild(0).gameObject.GetComponent<Scene22AlphaControl>().ChangeVisible(false);
+        GlobalTool.needCheckKnifeIdle = true;
+        GlobalTool.idleTime = 0;
         Invoke("ShowS1", 2);
     }
 

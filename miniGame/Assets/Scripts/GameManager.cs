@@ -407,9 +407,7 @@ public partial class GameManager
         }
         
         while (MySubAudioSource.volume > 0 && MySubAudioSource.volume< 1.0f)
-        {
-            print(" RunAdjustBgAudio :" + MySubAudioSource.volume);
-
+        { 
             MySubAudioSource.volume += AudioEachAdjustValue;
 
             yield return new WaitForSeconds(AudioEachAdjustTime);

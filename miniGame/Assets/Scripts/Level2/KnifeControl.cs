@@ -82,6 +82,7 @@ public class KnifeControl : WrappedBehaviour {
                     Invoke("ShowMakeMutou", 4);
                     Invoke("HideMakeMutou", 5);
                     Invoke("Next", 5);
+                    GlobalTool.needCheckKnifeIdle = false;
                 }
                 woodState += 1;
                 if (woodState <= 5) 
@@ -95,6 +96,7 @@ public class KnifeControl : WrappedBehaviour {
                     Invoke("Next2", 4);
                     GlobalTool.reenter = true;
                     GlobalTool.reenterNotHandled = true;
+                    GlobalTool.needCheckKnifeIdle = false;
                 }
             }
         }
