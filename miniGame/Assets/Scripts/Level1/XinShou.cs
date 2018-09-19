@@ -29,7 +29,7 @@ public class XinShou : MonoBehaviour
         if (rootGo == GameManager._instance.Player)
         {
             XinShouGO.SetActive(true);
-
+            XinShouGO.transform.root.gameObject.transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
             Destroy(CurBoxCollider2D);
         }
     }

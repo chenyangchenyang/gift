@@ -128,7 +128,7 @@ public class ButtonControl : WrappedBehaviour {
         GameManager._instance.GetControl();
         GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
         GameManager._instance.GlobalControllerObject.GetComponent<GlobalControl>().StartS1Bgm();
-        Invoke("ShowNewBee", 2);
+        Invoke("ShowNewBee", 1);
     }
 
     void ExternalScene()
@@ -153,7 +153,7 @@ public class ButtonControl : WrappedBehaviour {
         newbee.transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
         newbee.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
         newbee.GetComponent<NewbeeControl>().show = true;
-        Invoke("RemoveNewBee", 4);
+        Invoke("RemoveNewBee", 1.5f);
     }
 
     void RemoveNewBee()
