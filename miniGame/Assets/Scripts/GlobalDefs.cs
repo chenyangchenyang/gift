@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GlobalDefs : MonoBehaviour {
 
-    [HideInInspector]
     public float PuckTimeLength = 2;
     [HideInInspector]
     public float puckTime = 0;
@@ -111,29 +110,32 @@ public partial class GlobalTool
     public static void ReleasePuckBall()
     {
         Show(puckBall);
-        puckBall.transform.position = player.transform.position;
-        PlayerControl playerControl = player.GetComponent<PlayerControl>();
-        if (player.transform.GetChild(0).localScale.x > 0)
+        GameManager._instance.PuckBall.transform.position = GameManager._instance.Player.transform.position;
+        PlayerControl playerControl = GameManager._instance.Player.GetComponent<PlayerControl>();
+        if (GameManager._instance.Player.transform.GetChild(0).localScale.x > 0)
         {
-            puckBall.GetComponent<PlayerControl>().dir = new Vector2(1, 0);
+            GameManager._instance.PuckBall.GetComponent<PlayerControl>().dir = new Vector2(1, 0);
         }
         else
         {
 
-            puckBall.GetComponent<PlayerControl>().dir = new Vector2(-1, 0);
+            GameManager._instance.PuckBall.GetComponent<PlayerControl>().dir = new Vector2(-1, 0);
         }
-        puckBall.GetComponent<PlayerControl>().move = true;
-        puckBall.transform.GetChild(0).localScale = player.transform.GetChild(0).localScale;
+        GameManager._instance.PuckBall.GetComponent<PlayerControl>().move = true;
+        GameManager._instance.PuckBall.transform.GetChild(0).localScale = GameManager._instance.Player.transform.GetChild(0).localScale;
+        GameManager._instance.ReleaseControl();
         //controlButton.SetActive(false);
     }
 
     // 将本体移动到帕克法球的位置，使帕克法球消失，交还控制消息
     public static void GotoPuckBall()
     {
-        player.transform.position = puckBall.transform.position;
-        puckBall.GetComponent<PlayerControl>().move = false;
+        Camera.main.GetComponent<CameraControl>().lookGameObject = GameManager._instance.Player;
+        GameManager._instance.Player.transform.position = GameManager._instance.PuckBall.transform.position;
+        GameManager._instance.PuckBall.GetComponent<PlayerControl>().move = false;
+        GameManager._instance.GetControl();
         //controlButton.SetActive(true);
-        Hide(puckBall);
+        Hide(GameManager._instance.PuckBall);
     }
 
     public static void Hide(GameObject o)
