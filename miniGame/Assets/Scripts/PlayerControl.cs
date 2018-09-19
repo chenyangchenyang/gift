@@ -12,7 +12,6 @@ public class PlayerControl : MonoBehaviour
     public Vector2 lastDir;
 	private Text TextComponent;
 
-    [HideInInspector]
     public float speed = 1;
     [SerializeField]
     private float addSpeed = 0;
@@ -33,19 +32,19 @@ public class PlayerControl : MonoBehaviour
         {
             GlobalTool.CurStandSpeed = SpeedStand[0];
         }
-        GetComponent<Animator>().SetFloat("Speed", GlobalTool.animSpeed);  
         for (int i = 0; i < transform.GetChild(0).childCount; ++i)
         {
             transform.GetChild(0).GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = GlobalTool.spriteColor;
         }
     }
 
-	void Update () 
-	{   
+	void Update ()
+    {
+        GetComponent<Animator>().SetFloat("Speed", GlobalTool.animSpeed);
         var rb = GetComponent<Rigidbody2D>();
         if (move)
         {
-            speed += Time.deltaTime * addSpeed * Mathf.Log(GlobalTool.CurStandSpeed - speed + 2);
+            speed += Time.deltaTime * addSpeed * Mathf.Log(SpeedStand[0] - speed + 2);
             if (speed < 0)
             {
                 speed = 0;
@@ -55,10 +54,17 @@ public class PlayerControl : MonoBehaviour
         }   
         else
         {
-            speed = SpeedStand[0];
+            if (gameObject == GameManager._instance.PuckBall)
+            {
+                speed = SpeedStand[0];
+            }
+            else
+            {
+                speed = SpeedStand[0];
+            }
             rb.sharedMaterial.friction = 1;
         }
-
+        if (gameObject == GameManager._instance.PuckBall) return;
         UpdateSpeed();
     }
 
