@@ -17,17 +17,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private float addSpeed = 0;
 
-    [SerializeField]
-    private float startSpeed;
     private float lastSpeed;
 
-    public float SpeedForFirstSub;
-    public float SpeedForSecSub;
 
-    [HideInInspector]
-    public float CurStandSpeed;
-
-    [HideInInspector]
     public float[] SpeedStand= new float[3];
     public float[] SpeedAnimation = new float[3] { 1, 1, 1 };
     public Color[] SpriteColor = new Color[3];
@@ -39,11 +31,8 @@ public class PlayerControl : MonoBehaviour
 
         if(0 == GlobalTool.CurDeathCount)
         {
-            CurStandSpeed = startSpeed;
+            GlobalTool.CurStandSpeed = SpeedStand[0];
         }
-        SpeedStand[0] = startSpeed;
-        SpeedStand[1] = SpeedForFirstSub;
-        SpeedStand[2] = SpeedForSecSub;
         GetComponent<Animator>().SetFloat("Speed", GlobalTool.animSpeed);  
         for (int i = 0; i < transform.GetChild(0).childCount; ++i)
         {
@@ -52,22 +41,21 @@ public class PlayerControl : MonoBehaviour
     }
 
 	void Update () 
-	{
-        print(GetComponent<Animator>().GetFloat("Speed"));
-        speed += Time.deltaTime * addSpeed * Mathf.Log(startSpeed - speed + 2);
-        if (speed < 0)
-        {
-            speed = 0;
-        }
+	{   
         var rb = GetComponent<Rigidbody2D>();
         if (move)
         {
+            speed += Time.deltaTime * addSpeed * Mathf.Log(GlobalTool.CurStandSpeed - speed + 2);
+            if (speed < 0)
+            {
+                speed = 0;
+            }
             rb.sharedMaterial.friction = 1;
             rb.position = rb.position + speed * dir * Time.deltaTime;
         }   
         else
         {
-            speed = startSpeed;
+            speed = SpeedStand[0];
             rb.sharedMaterial.friction = 1;
         }
 
@@ -114,9 +102,9 @@ public class PlayerControl : MonoBehaviour
     {
         //print("CurStandSpeed : "+ CurStandSpeed);
 
-        if(speed > CurStandSpeed)
+        if(speed > GlobalTool.CurStandSpeed)
         {
-            speed = CurStandSpeed;
+            speed = GlobalTool.CurStandSpeed;
         }
     }
 
@@ -157,14 +145,14 @@ public partial class GlobalTool
     public static int CurDeathCount = 0;
     public static float animSpeed = 1;
     public static Color spriteColor = Color.white;
-
+    public static float CurStandSpeed;
     public static void SetCurDeathCount(int idx)
     {
         PlayerControl player= GameManager._instance.Player.GetComponent<PlayerControl>();
         
         if(player.SpeedStand!= null && idx< player.SpeedStand.Length && idx>= 0)
         {
-            player.CurStandSpeed = player.SpeedStand[idx];
+            CurStandSpeed = player.SpeedStand[idx];
         }        
         if (idx >= 0 && idx < player.SpeedAnimation.Length)
         {
