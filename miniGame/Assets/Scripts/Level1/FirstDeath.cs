@@ -9,6 +9,8 @@ public class FirstDeath : MonoBehaviour
 
     public void ActiveImg()
     {
+        print("FirstDeath ActiveImg");
+
         Img.transform.position = GameManager._instance.Player.transform.position + Offset;
 
         Img.SetActive(true);

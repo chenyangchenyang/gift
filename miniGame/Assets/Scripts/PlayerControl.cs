@@ -37,9 +37,9 @@ public class PlayerControl : MonoBehaviour
 
         if(0 == GlobalTool.CurDeathCount)
         {
-            CurStandSpeed = speed;
+            CurStandSpeed = startSpeed;
         }
-        SpeedStand[0] = speed;
+        SpeedStand[0] = startSpeed;
         SpeedStand[1] = SpeedForFirstSub;
         SpeedStand[2] = SpeedForSecSub;
     }
@@ -105,9 +105,9 @@ public class PlayerControl : MonoBehaviour
 
     private void UpdateSpeed()
     {
-        //print("CurStandSpeed : "+ CurStandSpeed);
-
-        if(speed > CurStandSpeed)
+        print("CurStandSpeed : "+ CurStandSpeed+ " speed : " + speed);
+       
+        if (speed > CurStandSpeed)
         {
             speed = CurStandSpeed;
         }

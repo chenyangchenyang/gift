@@ -102,8 +102,6 @@ public partial class GameManager : MonoBehaviour
 
     private void InitializedPosition()
     {
-        GlobalTool.ShowFistDeathImg();
-
         if(!GlobalTool.Saves.ContainsKey(PlayerPosition))
         {
             return;
@@ -115,6 +113,10 @@ public partial class GameManager : MonoBehaviour
         print("cameraPositionStr :" + cameraPositionStr);
         Player.transform.position = String2Vector3(playerPositionStr);
         CaremaObject.transform.position = String2Vector3(cameraPositionStr);
+
+        print("GlobalTool.TotalDeathCount: "+GlobalTool.TotalDeathCount);
+
+        GlobalTool.ShowFistDeathImg();
     }
 
     void Update()
@@ -338,7 +340,7 @@ public partial class GlobalTool
     static public float BgAudioTime = 0.0f;
     static public string BgClipName;
 
-    static private int TotalDeathCount = 0;
+    static public int TotalDeathCount = 0;
 
     static public void ChangeScene()
     {
