@@ -39,11 +39,11 @@ public class ChildControl : MonoBehaviour {
         }
         else
         {
-            Invoke("Blackout", 1.5f);
+            Invoke("Blackout", 1f);
 
-            Invoke("Next", 3.5f);
+            Invoke("Next", 1.5f);
 
-            Invoke("Whiteout", 4.5f);
+            Invoke("Whiteout", 2f);
         }
     }
 

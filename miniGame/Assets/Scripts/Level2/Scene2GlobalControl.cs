@@ -73,8 +73,8 @@ public class Scene2GlobalControl : WrappedBehaviour {
         Invoke("ChangeBGAudio", 2.0f);
 
         Invoke("Blackout", 2);
-        Invoke("Next", 4);
-        Invoke("Whiteout", 6);
+        Invoke("Next", 3);
+        Invoke("Whiteout", 3);
     }
 
     void Next()

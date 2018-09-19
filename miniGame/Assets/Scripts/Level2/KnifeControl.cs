@@ -40,9 +40,14 @@ public class KnifeControl : WrappedBehaviour {
 
     private void OnMouseDrag()
     {
-        if (!reseted && woodState >= 3)
+        if (!reseted && woodState == 1)
         {
+            reseted = true;
             timePast = 0;
+        }
+        if (!reseted && woodState == 3)
+        {
+            timePast = 3;
             reseted = true;
         }
         if (woodState > 3)
@@ -75,12 +80,13 @@ public class KnifeControl : WrappedBehaviour {
                     // 切换到离别场景
                     Invoke("Blackout", 3);
                     Invoke("ShowMakeMutou", 4);
-                    Invoke("HideMakeMutou", 7);
-                    Invoke("Next", 8);
+                    Invoke("HideMakeMutou", 5);
+                    Invoke("Next", 5);
                 }
                 woodState += 1;
-                wood.GetComponent<SpriteRenderer>().sprite = 
-                    Resources.Load("img/第二关场景3/mutou" + woodState, new Sprite().GetType()) as Sprite;
+                if (woodState <= 5) 
+                    wood.GetComponent<SpriteRenderer>().sprite = 
+                        Resources.Load("img/第二关场景3/mutou" + woodState, new Sprite().GetType()) as Sprite;
                 if (woodState == 5)
                 {
                     Invoke("ChangeBG5",2.0f);

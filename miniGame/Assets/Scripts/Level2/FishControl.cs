@@ -61,8 +61,8 @@ public class FishControl : WrappedBehaviour {
         Invoke("ChangeBG4", 2);
 
         Invoke("Blackout", 2);
-        Invoke("Next", 4);
-        Invoke("Whiteout", 6);
+        Invoke("Next", 3);
+        Invoke("Whiteout", 3);
     }
 
     void ChangeBG4()

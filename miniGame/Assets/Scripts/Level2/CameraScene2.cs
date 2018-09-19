@@ -49,7 +49,7 @@ public class CameraScene2 : MonoBehaviour {
     public void Start2_2()
     {
         transform.position = pos2;
-        Invoke("InvisibleBg1", 4);
+        Invoke("InvisibleBg1", 2);
     }
 
     public void Start2_4(int state)

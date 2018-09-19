@@ -29,6 +29,8 @@ public class PlayerControl : MonoBehaviour
 
     [HideInInspector]
     public float[] SpeedStand= new float[3];
+    public float[] SpeedAnimation = new float[3] { 1, 1, 1 };
+    public Color[] SpriteColor = new Color[3];
 
     void Start () 
 	{
@@ -42,11 +44,16 @@ public class PlayerControl : MonoBehaviour
         SpeedStand[0] = startSpeed;
         SpeedStand[1] = SpeedForFirstSub;
         SpeedStand[2] = SpeedForSecSub;
+        GetComponent<Animator>().SetFloat("Speed", GlobalTool.animSpeed);  
+        for (int i = 0; i < transform.GetChild(0).childCount; ++i)
+        {
+            transform.GetChild(0).GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = GlobalTool.spriteColor;
+        }
     }
-	
 
 	void Update () 
 	{
+        print(GetComponent<Animator>().GetFloat("Speed"));
         speed += Time.deltaTime * addSpeed * Mathf.Log(startSpeed - speed + 2);
         if (speed < 0)
         {
@@ -94,7 +101,7 @@ public class PlayerControl : MonoBehaviour
 
     public void PlayFootStep()
     {
-        if (gameObject != GameManager._instance.Player)
+        if(gameObject != GameManager._instance.Player)
         {
             return;
         }
@@ -105,9 +112,9 @@ public class PlayerControl : MonoBehaviour
 
     private void UpdateSpeed()
     {
-        print("CurStandSpeed : "+ CurStandSpeed+ " speed : " + speed);
-       
-        if (speed > CurStandSpeed)
+        //print("CurStandSpeed : "+ CurStandSpeed);
+
+        if(speed > CurStandSpeed)
         {
             speed = CurStandSpeed;
         }
@@ -148,14 +155,21 @@ public class PlayerControl : MonoBehaviour
 public partial class GlobalTool
 {
     public static int CurDeathCount = 0;
+    public static float animSpeed = 1;
+    public static Color spriteColor = Color.white;
 
     public static void SetCurDeathCount(int idx)
     {
         PlayerControl player= GameManager._instance.Player.GetComponent<PlayerControl>();
-
+        
         if(player.SpeedStand!= null && idx< player.SpeedStand.Length && idx>= 0)
         {
             player.CurStandSpeed = player.SpeedStand[idx];
         }        
+        if (idx >= 0 && idx < player.SpeedAnimation.Length)
+        {
+            animSpeed = player.SpeedAnimation[idx];
+            spriteColor = player.SpriteColor[idx];
+        }
     }
 }
