@@ -318,13 +318,13 @@ MonoBehaviour:
   speed: 1
   addSpeed: 0
   SpeedStand:
-  - 2
+  - 2.8
   - 0
   - 0
   SpeedAnimation:
   - 1
-  - 1
-  - 1
+  - 0.8
+  - 0.6
   SpriteColor:
   - {r: 0, g: 0, b: 0, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}

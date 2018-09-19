@@ -396,8 +396,8 @@ MonoBehaviour:
   - 2.2
   SpeedAnimation:
   - 1
-  - 0.7
-  - 0.4
+  - 0.8
+  - 0.6
   SpriteColor:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 0.68235296, g: 0.6509804, b: 0.5882353, a: 1}
