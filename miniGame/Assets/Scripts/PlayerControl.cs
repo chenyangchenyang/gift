@@ -102,7 +102,7 @@ public class PlayerControl : MonoBehaviour
 
     public void PlayFootStep()
     {
-        if (gameObject != GameManager._instance.Player)
+        if(gameObject != GameManager._instance.Player)
         {
             return;
         }

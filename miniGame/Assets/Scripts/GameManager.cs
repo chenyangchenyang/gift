@@ -102,8 +102,6 @@ public partial class GameManager : MonoBehaviour
 
     private void InitializedPosition()
     {
-        GlobalTool.ShowFistDeathImg();
-
         if(!GlobalTool.Saves.ContainsKey(PlayerPosition))
         {
             return;
@@ -214,8 +212,6 @@ public partial class GameManager : MonoBehaviour
         GlobalTool.BgAudioTime = BgAudioSource.time;
 
         GlobalTool.BgClipName = BgAudioSource.clip.name;
-
-        GlobalTool.ReStart();
 
         string name = SceneManager.GetActiveScene().name;
 
@@ -338,30 +334,10 @@ public partial class GlobalTool
     static public float BgAudioTime = 0.0f;
     static public string BgClipName;
 
-    static private int TotalDeathCount = 0;
-
     static public void ChangeScene()
     {
         BgAudioTime = 0.0f;
         BgClipName = "";
-        CurDeathCount = 0;
-    }
-
-    static public void ReStart()
-    {
-        ++CurDeathCount;
-
-        SetCurDeathCount(CurDeathCount);
-
-        ++TotalDeathCount;
-    }
-
-    static public void ShowFistDeathImg()
-    {
-        if(1 == TotalDeathCount)
-        {
-            GameManager._instance.Player.GetComponent<FirstDeath>().ActiveImg();
-        }
     }
 }
 
