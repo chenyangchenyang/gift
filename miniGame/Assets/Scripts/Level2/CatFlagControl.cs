@@ -25,7 +25,7 @@ public class CatFlagControl : MonoBehaviour {
                 {
                     triggered = true;
                     pictureToShow.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
-                    Invoke("Hide", 2);
+                    Invoke("Hide", showTime);
                     return;
                 }
             }
@@ -33,7 +33,7 @@ public class CatFlagControl : MonoBehaviour {
             {
                 triggered = true;
                 pictureToShow.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
-                Invoke("Hide", 2);
+                Invoke("Hide", showTime);
                 return;
             }
         }
