@@ -43,7 +43,8 @@ public class PlayerControl : MonoBehaviour
             {
                 GlobalTool.reborn = false;
                 GameManager._instance.rebornAnim.SetActive(true);
-                GameManager._instance.rebornAnim.transform.position = GameManager._instance.Player.transform.position + new Vector3(0, -1f, 0);
+                GameManager._instance.rebornAnim.GetComponent<SpriteRenderer>().color = GlobalTool.spriteColor;
+                GameManager._instance.rebornAnim.transform.position = GameManager._instance.Player.transform.position;
                 Invoke("HideRebornAnimation", 1.5f);
                 GameManager._instance.Player.GetComponent<PlayerControl>().PauseMove();
                 for (int i = 0; i < transform.GetChild(0).childCount; ++i)
