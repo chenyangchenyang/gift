@@ -43,6 +43,7 @@ public partial class GameManager : MonoBehaviour
 
     public GameObject PlayerDeathAnimation;
 
+    [HideInInspector]
     public Vector3 LeftPoint;
 
     private AudioSource FootAudioSource;
@@ -83,12 +84,12 @@ public partial class GameManager : MonoBehaviour
          
         InitializedPosition();
 
-        ////if(null != Player  &&  null != PuckBall)
-        //{
-        //    PuckBall.transform.position = Player.transform.position - new Vector3(2, 0, 0);
+        //if(null != Player  &&  null != PuckBall)
+        {
+            PuckBall.transform.position = Player.transform.position - new Vector3(2, 0, 0);
 
-        //    LeftPoint = PuckBall.transform.position;
-        //}       
+            LeftPoint = PuckBall.transform.position;
+        }
 
         InitializedAudioSource();
     }
@@ -117,7 +118,14 @@ public partial class GameManager : MonoBehaviour
 
         print("playerPositionStr :"+ playerPositionStr);
         print("cameraPositionStr :" + cameraPositionStr);
-        Player.transform.position = String2Vector3(playerPositionStr);
+        Vector3 PersonPos= String2Vector3(playerPositionStr);
+
+        if(PersonPos.y> 100 || PersonPos.y< -100)
+        {
+            return;
+        }
+
+        Player.transform.position = PersonPos;
         CaremaObject.transform.position = String2Vector3(cameraPositionStr);
 
         print("GlobalTool.TotalDeathCount: "+GlobalTool.TotalDeathCount);
@@ -262,11 +270,18 @@ public partial class GameManager : MonoBehaviour
 
         if (collisionGameObject == Player || collisionGameObject == PuckBall)
         {
+            ReleaseControl();
+            Player.GetComponent<PlayerControl>().PauseMove();
+            PuckBall.GetComponent<PlayerControl>().PauseMove();
+
             print("onEnter collisionGameObject :"+ collisionGameObject.name);
 
             PlayerDeathAnimation.transform.position = collisionGameObject.transform.position;
 
-            collisionGameObject.transform.Translate(0, 10000.0f, 0);
+            Player.SetActive(false);
+            PuckBall.SetActive(false);
+
+            //collisionGameObject.transform.Translate(0, 10000.0f, 0);
 
             PlayerDeathAnimation.SetActive(true);
 
@@ -308,8 +323,11 @@ public partial class GameManager : MonoBehaviour
     {
         int clipIdx= Random.Range(0, FootStepAudios.Length);
 
-        FootAudioSource.clip = FootStepAudios[clipIdx];
-        FootAudioSource.Play();
+        if(null != FootAudioSource)
+        {
+            FootAudioSource.clip = FootStepAudios[clipIdx];
+            FootAudioSource.Play();
+        }      
     }
 
     public void AdjustAudioInTime(AudioSource audioSource, float time, bool IsDown)
@@ -376,9 +394,11 @@ public partial class GlobalTool
 
     static public void ShowFistDeathImg()
     {
-        if(1 == TotalDeathCount)
+        GameObject player= GameManager._instance.Player;
+
+        if (1 == TotalDeathCount && null != player)
         {
-            GameManager._instance.Player.GetComponent<FirstDeath>().ActiveImg();
+            player.GetComponent<FirstDeath>().ActiveImg();
         }
     }
 }
