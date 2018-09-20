@@ -11,7 +11,8 @@ public class ParentControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Camera.main.GetComponent<CameraControl>().lookGameObject = GameObject.Find("Player");
-	}
+        GlobalTool.needCheckLeaveHint = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,6 +30,7 @@ public class ParentControl : MonoBehaviour {
             Invoke("ChangeScene", 1);
             ChangeBGChangeHuiYi5Down();
         }
+
 	}
 
     void ChangeScene()
@@ -40,6 +42,8 @@ public class ParentControl : MonoBehaviour {
 
     public void Leave()
     {
+        GlobalTool.needCheckLeaveHint = false;
+
         GetComponent<Animation>().Play("parentLeaving");
         leaving = true;
     }
