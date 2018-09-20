@@ -116,9 +116,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4196029691508906}
   - component: {fileID: 212369640428393094}
-  - component: {fileID: 61639036419311742}
-  - component: {fileID: 68119644676148762}
-  - component: {fileID: 68114550401220210}
+  - component: {fileID: 61194250492003998}
+  - component: {fileID: 68627949842738272}
   m_Layer: 9
   m_Name: personUp_1
   m_TagString: Untagged
@@ -223,19 +222,19 @@ Transform:
   m_Father: {fileID: 4362292109329496}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61639036419311742
+--- !u!61 &61194250492003998
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1953881585351168}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.0985761}
+  m_Offset: {x: 0.034849882, y: 1.0432225}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -246,9 +245,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.02, y: 0.80284786}
+  m_Size: {x: 2.6961088, y: 0.02404213}
   m_EdgeRadius: 0
---- !u!68 &68114550401220210
+--- !u!68 &68627949842738272
 EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -263,33 +262,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.4709425, y: 1.0383652}
-  - {x: -0.06933002, y: 1.4351671}
-  - {x: 0.138218, y: 1.4283447}
-  - {x: 1.4553698, y: 1.0852112}
---- !u!68 &68119644676148762
-EdgeCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1953881585351168}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -1.4819765, y: 1.0389948}
-  - {x: -0.8275376, y: 1.2573248}
-  - {x: -0.38529307, y: 1.3656783}
-  - {x: -0.04777182, y: 1.4577402}
-  - {x: 0.20484668, y: 1.4412944}
-  - {x: 0.85109174, y: 1.2797713}
-  - {x: 1.0924369, y: 1.2094288}
-  - {x: 1.4655504, y: 1.0933626}
+  - {x: -1.4464378, y: 1.0378999}
+  - {x: -0.72355753, y: 1.310972}
+  - {x: 0.022909388, y: 1.43667}
+  - {x: 0.8926381, y: 1.2510793}
+  - {x: 1.4464768, y: 1.0908524}
 --- !u!111 &111575639521595276
 Animation:
   m_ObjectHideFlags: 1
