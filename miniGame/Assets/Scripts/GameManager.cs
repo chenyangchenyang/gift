@@ -65,6 +65,7 @@ public partial class GameManager : MonoBehaviour
         if(!GlobalTool.HasBG())
         {
             BackGroundAudio.GetComponent<AudioSource>().gameObject.SetActive(false);
+            GlobalTool.NonBg = true;
         }      
 
         Initialized();
