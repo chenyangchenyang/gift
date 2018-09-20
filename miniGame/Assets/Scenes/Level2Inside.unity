@@ -2886,7 +2886,7 @@ SpriteRenderer:
   m_Size: {x: 1.6, y: 1.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!114 &1091680260
 MonoBehaviour:
@@ -5028,6 +5028,11 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 82396032819502988, guid: 3974de3c8fb979b46a6eccee743895ed,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114822714211265900, guid: 3974de3c8fb979b46a6eccee743895ed, type: 2}
