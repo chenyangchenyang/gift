@@ -36,6 +36,7 @@ public class BubbleClickControl : WrappedBehaviour {
 
     void ShowLetter()
     {
+        GlobalTool.needCheckLetterHint = true;
         letter.transform.position = Camera.main.transform.position + new Vector3(0, 0, 10);
         for (int i = 0; i < 3; ++i)
         {

@@ -49,6 +49,7 @@ public class DragControl : WrappedBehaviour {
             content.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
             yeye.GetComponent<Scene22AlphaControl>().ChangeVisible(true);
             Invoke("FinishLetter", 6);
+            GlobalTool.needCheckLetterHint = false;
         }
         lastPos = transform.position;
     }

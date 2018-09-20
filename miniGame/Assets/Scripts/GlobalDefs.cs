@@ -8,14 +8,17 @@ public class GlobalDefs : MonoBehaviour {
     [HideInInspector]
     public float puckTime = 0;
     public float coolDown = 2;
-    private GameObject leavehint;
+    private GameObject leavehint, letterhint;
     public float runtimeCooldown;
 	// Use this for initialization
 	void Start () {
         GlobalTool.Init();
         leavehint = GameObject.Find("leavehint");
-        leavehint.SetActive(false);
-
+        if (leavehint != null)
+            leavehint.SetActive(false);
+        letterhint = GameObject.Find("letterhint");
+        if (letterhint != null)
+            letterhint.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -44,11 +47,38 @@ public class GlobalDefs : MonoBehaviour {
                 Invoke("HideKnifeHint", 2);
             }
         }
+
+        if (GlobalTool.needCheckLeaveHint)
+        {
+            if (GlobalTool.idleTime > 4)
+            {
+                GlobalTool.idleTime = -2;
+                leavehint.SetActive(true);
+                leavehint.GetComponent<Animation>().Play("hint-left");
+                Invoke("HideKnifeHint", 2);
+            }
+        }
+
+        if (GlobalTool.needCheckLetterHint)
+        {
+            if (GlobalTool.idleTime > 4)
+            {
+                GlobalTool.idleTime = -2;
+                letterhint.SetActive(true);
+                letterhint.GetComponent<Animation>().Play("hint-left");
+                Invoke("HideLetterHint", 2);
+            }
+        }
     }
 
     void HideKnifeHint()
     {
         leavehint.SetActive(false);
+    }
+
+    void HideLetterHint()
+    {
+        letterhint.SetActive(false);
     }
 
     public void Puck()

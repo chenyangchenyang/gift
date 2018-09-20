@@ -154,4 +154,5 @@ public partial class GlobalTool
     public static bool needCheckKnifeIdle = false;
     public static bool needCheckDumplingIdle = false;
     public static bool needCheckLeaveHint = false;
+    public static bool needCheckLetterHint = false;
 }
