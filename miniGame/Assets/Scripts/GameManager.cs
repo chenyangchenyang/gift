@@ -75,17 +75,7 @@ public partial class GameManager : MonoBehaviour
 
     }
 
-    void HideRebornAnimation()
-    {
-        rebornAnim.transform.position = new Vector3(1000, 1000, 0);
-        rebornAnim.SetActive(false);
-        GetControl();
-        for (int i = 0; i < Player.transform.GetChild(0).childCount; ++i)
-        {
-            Player.transform.GetChild(0).GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = GlobalTool.lastColor;
-        }
-        Player.GetComponent<PlayerControl>().StartMove();
-    }
+
 
     private void Initialized()
     {

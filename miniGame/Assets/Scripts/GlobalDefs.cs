@@ -22,7 +22,14 @@ public class GlobalDefs : MonoBehaviour {
         {
             GotoPuckBall();
         }
-	}
+
+
+        GlobalTool.idleTime += Time.deltaTime;
+        if (Input.GetMouseButtonDown(0))
+        {
+            GlobalTool.idleTime = 0;
+        }
+    }
 
     public void Puck()
     {

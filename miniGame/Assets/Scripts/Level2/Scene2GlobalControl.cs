@@ -5,13 +5,15 @@ using UnityEngine;
 public class Scene2GlobalControl : WrappedBehaviour {
 
     int dumplings = 4;
-    GameObject mouseHint, knifehint;
+    GameObject mouseHint, knifehint, dumplinghint;
     Queue<GameObject> toDestroy = new Queue<GameObject>();
     // Use this for initialization
     void Start () {
         mouseHint = GameObject.Find("MouseHint");
         knifehint = GameObject.Find("knifehint");
+        dumplinghint = GameObject.Find("dumplinghint");
         knifehint.SetActive(false);
+        dumplinghint.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -44,11 +46,27 @@ public class Scene2GlobalControl : WrappedBehaviour {
                 Invoke("HideKnifeHint", 2);
             }
         }
-	}
+
+        if (GlobalTool.needCheckDumplingIdle)
+        {
+            if (GlobalTool.idleTime > 4)
+            {
+                GlobalTool.idleTime = -2;
+                dumplinghint.SetActive(true);
+                dumplinghint.GetComponent<Animation>().Play("hint-left");
+                Invoke("HideDumplingHint", 2);
+            }
+        }
+    }
 
     void HideKnifeHint()
     {
         knifehint.SetActive(false);
+    }
+
+    void HideDumplingHint()
+    {
+        dumplinghint.SetActive(false);
     }
 
     void HideMouseHint()
@@ -65,6 +83,7 @@ public class Scene2GlobalControl : WrappedBehaviour {
         Scene2Global.twoHandsAlpha.ChangeVisible(true);
         if (dumplings == 5)
         {
+            GlobalTool.needCheckDumplingIdle = false;
             Invoke("Show5Dumpling", 1);
         }
         else
@@ -91,6 +110,7 @@ public class Scene2GlobalControl : WrappedBehaviour {
     void ShowBg2()
     {
         Scene2Global.Show(Scene2Global.bg2);
+        GlobalTool.needCheckDumplingIdle = false;
         Scene2Global.bg2Alpha.ChangeVisible(true);
         Scene2Global.Hide(GameObject.Find("CFish1"));
         Scene2Global.Hide(GameObject.Find("CFish2"));
@@ -132,4 +152,5 @@ public partial class GlobalTool
 {
     public static float idleTime = 0;
     public static bool needCheckKnifeIdle = false;
+    public static bool needCheckDumplingIdle = false;
 }

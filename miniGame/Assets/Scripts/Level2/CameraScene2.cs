@@ -79,6 +79,7 @@ public class CameraScene2 : MonoBehaviour {
     void InvisibleBg1()
     {
         Scene2Global.bg1Alpha.ChangeVisible(false);
+        GlobalTool.needCheckDumplingIdle = true;
         Invoke("HideBg1", 1);
     }
 
