@@ -65,6 +65,10 @@ public class PlayerControl : MonoBehaviour
             rb.sharedMaterial.friction = 1;
         }
         if (gameObject == GameManager._instance.PuckBall) return;
+        if (transform.position.y < -100)
+        {
+            GameManager._instance.ReStart();
+        }
         UpdateSpeed();
     }
 

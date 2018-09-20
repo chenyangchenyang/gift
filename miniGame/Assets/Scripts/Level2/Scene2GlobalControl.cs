@@ -30,7 +30,10 @@ public class Scene2GlobalControl : WrappedBehaviour {
         GlobalTool.idleTime += Time.deltaTime;
 
 
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            GlobalTool.idleTime = 0;
+        }
         if (GlobalTool.needCheckKnifeIdle)
         {
             if (GlobalTool.idleTime > 4)
@@ -39,7 +42,6 @@ public class Scene2GlobalControl : WrappedBehaviour {
                 knifehint.SetActive(true);
                 knifehint.GetComponent<Animation>().Play("hint-left");
                 Invoke("HideKnifeHint", 2);
-
             }
         }
 	}
