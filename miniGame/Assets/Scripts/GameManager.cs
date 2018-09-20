@@ -27,6 +27,8 @@ public partial class GameManager : MonoBehaviour
 
     public GameObject StartLevelAnimation;
 
+    public GameObject rebornAnim;
+
     public float LeftCameraBorderDistanceEndPointX = 2.0f;
 
     public float RightCameraBorderDistanceEndPointX = 10.0f;
@@ -70,6 +72,19 @@ public partial class GameManager : MonoBehaviour
 
         Initialized();
         Camera.main.GetComponent<CameraControl>().lookGameObject = GameObject.Find("Player");
+
+    }
+
+    void HideRebornAnimation()
+    {
+        rebornAnim.transform.position = new Vector3(1000, 1000, 0);
+        rebornAnim.SetActive(false);
+        GetControl();
+        for (int i = 0; i < Player.transform.GetChild(0).childCount; ++i)
+        {
+            Player.transform.GetChild(0).GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = GlobalTool.lastColor;
+        }
+        Player.GetComponent<PlayerControl>().StartMove();
     }
 
     private void Initialized()
@@ -210,6 +225,8 @@ public partial class GameManager : MonoBehaviour
     {
         GlobalTool.scene1StartHandled = false;
         Invoke("ReStartScene", 1.03f);
+        Invoke("GetControl", 1.5f);
+        GlobalTool.reborn = true;
     }
 
     private void ReStartScene()
@@ -338,9 +355,10 @@ public partial class GameManager : MonoBehaviour
 
 public partial class GlobalTool
 {
+    public static bool reborn = false;
     static public float BgAudioTime = 0.0f;
     static public string BgClipName;
-
+    public static Color lastColor;
     static public int TotalDeathCount = 0;
 
     static public void ChangeScene()

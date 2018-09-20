@@ -36,9 +36,40 @@ public class PlayerControl : MonoBehaviour
         {
             transform.GetChild(0).GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = GlobalTool.spriteColor;
         }
+
+        if (gameObject == GameManager._instance.Player)
+        {
+            if (GlobalTool.reborn)
+            {
+                GlobalTool.reborn = false;
+                GameManager._instance.rebornAnim.SetActive(true);
+                GameManager._instance.rebornAnim.transform.position = GameManager._instance.Player.transform.position + new Vector3(0, -1f, 0);
+                Invoke("HideRebornAnimation", 1.5f);
+                GameManager._instance.Player.GetComponent<PlayerControl>().PauseMove();
+                for (int i = 0; i < transform.GetChild(0).childCount; ++i)
+                {
+                    print(i);
+                    transform.GetChild(0).GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
+                }
+                GameManager._instance.ReleaseControl();
+            }
+        }
+        
     }
 
-	void Update ()
+    void HideRebornAnimation()
+    {
+        GameManager._instance.rebornAnim.transform.position = new Vector3(1000, 1000, 0);
+        GameManager._instance.rebornAnim.SetActive(false);
+        GameManager._instance.GetControl();
+        for (int i = 0; i < GameManager._instance.Player.transform.GetChild(0).childCount; ++i)
+        {
+            GameManager._instance.Player.transform.GetChild(0).GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = GlobalTool.spriteColor;
+        }
+        GameManager._instance.Player.GetComponent<PlayerControl>().StartMove();
+    }
+
+    void Update ()
     {
         GetComponent<Animator>().SetFloat("Speed", GlobalTool.animSpeed);
         var rb = GetComponent<Rigidbody2D>();
