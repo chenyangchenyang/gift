@@ -43,7 +43,7 @@ public partial class GameManager : MonoBehaviour
 
     public GameObject PlayerDeathAnimation;
 
-    private Vector3 LeftPoint;
+    public Vector3 LeftPoint;
 
     private AudioSource FootAudioSource;
     
@@ -83,12 +83,12 @@ public partial class GameManager : MonoBehaviour
          
         InitializedPosition();
 
-        //if(null != Player  &&  null != PuckBall)
-        {
-            PuckBall.transform.position = Player.transform.position - new Vector3(2, 0, 0);
+        ////if(null != Player  &&  null != PuckBall)
+        //{
+        //    PuckBall.transform.position = Player.transform.position - new Vector3(2, 0, 0);
 
-            LeftPoint = PuckBall.transform.position;
-        }       
+        //    LeftPoint = PuckBall.transform.position;
+        //}       
 
         InitializedAudioSource();
     }
@@ -127,6 +127,13 @@ public partial class GameManager : MonoBehaviour
 
     void Update()
     {
+
+        if (Player != null && (Player.transform.position.y < -100 || Player.transform.position.y > 100))
+        {          
+            ReStart();
+
+            return;
+        }
 
         if (PuckBall != null && PuckBall.transform.position.x < LeftPoint.x)
         {

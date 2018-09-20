@@ -101,14 +101,24 @@ public class PlayerControl : MonoBehaviour
         {
             GameManager._instance.ReStart();
         }
+
+        if (gameObject != GameManager._instance.PuckBall && (transform.position.y < -100 || transform.position.y > 100))
+        {
+            print("Update");
+
+            GameManager._instance.ReStart();
+        }
+
         UpdateSpeed();
     }
 
     private void FixedUpdate()
     {
         transform.rotation = Quaternion.identity;
-        if (gameObject != GameManager._instance.PuckBall && transform.position.y < -100)
+        if (gameObject != GameManager._instance.PuckBall && (transform.position.y < -100 || transform.position.y > 100) )
         {
+            print("FixedUpdate");
+
             GameManager._instance.ReStart();
         }
     }
