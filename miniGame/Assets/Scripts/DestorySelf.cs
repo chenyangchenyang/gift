@@ -7,5 +7,7 @@ public class DestorySelf : MonoBehaviour
     public void UnActive()
     {
         gameObject.SetActive(false);
+
+        GameManager._instance.ReStart();
     }
 }

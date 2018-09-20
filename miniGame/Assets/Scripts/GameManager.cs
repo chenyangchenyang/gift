@@ -89,6 +89,8 @@ public partial class GameManager : MonoBehaviour
             PuckBall.transform.position = Player.transform.position - new Vector3(2, 0, 0);
 
             LeftPoint = PuckBall.transform.position;
+
+            print("LeftPoint:"+ LeftPoint);
         }
 
         InitializedAudioSource();
@@ -236,11 +238,17 @@ public partial class GameManager : MonoBehaviour
 
     private void ReStartScene()
     {
-        GlobalTool.BgAudioTime = BgAudioSource.time;
+        if(BgAudioSource!= null)
+        {
+            GlobalTool.BgAudioTime = BgAudioSource.time;
 
-        GlobalTool.BgClipName = BgAudioSource.clip.name;
+            if (BgAudioSource.clip != null)
+                GlobalTool.BgClipName = BgAudioSource.clip.name;
+        }           
 
         GlobalTool.ReStart();
+
+        print("ReStartScene ReStartScene ReStartScene");
 
         string name = SceneManager.GetActiveScene().name;
 
@@ -285,7 +293,7 @@ public partial class GameManager : MonoBehaviour
 
             PlayerDeathAnimation.SetActive(true);
 
-            GameManager._instance.ReStart();
+            //GameManager._instance.ReStart();
 
             return;
         }
